@@ -1,5 +1,9 @@
-# Name of the project
+# Comparison of two lossless data compression algorithms
 
-## Weekly reports
+## Documentation
+
+[Project description](https://github.com/tsalohei/tiralab-taru/blob/main/documentation/project_description.md)
+
+###  Weekly reports
 
 [Week 1](https://github.com/tsalohei/tiralab-taru/blob/main/documentation/weekly_reports/week1.md)
