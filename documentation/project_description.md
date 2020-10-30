@@ -4,6 +4,8 @@ The purpose of this project is to compare two lossless data compression algorith
 
 I chose this topic because compressing data has so many practical applications. For example in a digital marketplace, when a user downloads an image of some item s/he is planning to sell, the system often needs to compress the image to a smaller size.
 
+The documentation, code and comments are written in English. This project is a part of my degree "tietojenkäsittelytieteen kandidaatti (TKT)".
+
 ## Algorithms and data structures
 The Huffman and LZ77 algorithms are implemented without Java’s own data structures. Hence, all the necessary data structures will be coded (for example a priority queue for Huffman).
 
@@ -12,8 +14,6 @@ The time complexity for Huffman is O(n log n) (reference 1) and the time complex
 
 ## Input and output
 At least 10 different text files will be used as input in this comparison of Huffman and LZ77 algorithms. The aim is that each output file will be around 40-60% smaller compared with the input file. 
-
-The documentation, code and comments are written in English. This project is a part of my degree "tietojenkäsittelytieteen kandidaatti (TKT)".
 
 ## References
 1. <https://en.wikipedia.org/wiki/Huffman_coding> 
