@@ -8,6 +8,7 @@
 
 [Week 1](https://github.com/tsalohei/tiralab-taru/blob/main/documentation/weekly_reports/week1.md)
 
+[Week 2](https://github.com/tsalohei/tiralab-taru/blob/main/documentation/weekly_reports/week2.md)
 
 ## Terminal commands
 
