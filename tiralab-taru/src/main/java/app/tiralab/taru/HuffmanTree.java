@@ -90,6 +90,7 @@ public class HuffmanTree {
   
             HuffmanNode internalNode = new HuffmanNode(); 
 
+            
             internalNode.freq = firstNode.freq + secondNode.freq; 
             internalNode.c = '-'; 
   
