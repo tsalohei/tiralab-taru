@@ -4,10 +4,10 @@ package app.tiralab.taru;
  * This class represents one node used in a Huffman Tree (minimum heap).
  */
 public class HuffmanNode {
-    char c;
-    int freq;
-    HuffmanNode left;
-    HuffmanNode right;
+    private char c;
+    private int freq;
+    private HuffmanNode left;
+    private HuffmanNode right;
     
     HuffmanNode () {
     }
@@ -34,5 +34,13 @@ public class HuffmanNode {
     
     public void setRightNode(HuffmanNode right) {
         this.right = right;
+    }
+    
+    public HuffmanNode getLeft() {
+        return this.left;
+    }
+    
+    public HuffmanNode getRight() {
+        return this.right;
     }
 }

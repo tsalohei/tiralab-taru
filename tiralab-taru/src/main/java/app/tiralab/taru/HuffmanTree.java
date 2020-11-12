@@ -1,5 +1,6 @@
 package app.tiralab.taru;
 
+import java.util.HashMap;
 import java.util.Map;
 import java.util.PriorityQueue;
 
@@ -13,6 +14,7 @@ public class HuffmanTree {
     private char[] charArray;
     private int[] charFreq;
     private HuffmanNode root;
+    Map<Character, String> map;
     
     public HuffmanTree(Input text) {
         //this.n = this.input.getNroOfUniqueChars();
@@ -20,13 +22,10 @@ public class HuffmanTree {
         //this.charFreq = this.input.getCharFreq();
         this.input = text;
         this.root = null;
+        this.map = new HashMap<Character, String>();
     }
     
     public HuffmanNode create() {
-        // input = aaaaabbbcc    
-        // [a,b,c]
-        // [4,3,2]
-        
         input.calculate();
         this.charArray = input.getCharArray();
         this.charFreq = input.getCharFreq();
@@ -34,17 +33,17 @@ public class HuffmanTree {
         PriorityQueue<HuffmanNode> q = buildMinHeap(this.charArray, this.charFreq);
         HuffmanNode rootNode = createInternalNodes(q);
      
-        Map<Character, String> huffmanPrefixes = buildPrefixes(rootNode);
+        buildPrefixes(rootNode, "");
         
-        //FIX THIS
-        return null;
+        return rootNode;
         
     }
     
-    //IMPLEMENT THIS!
-    public Map<Character, String> buildPrefixes(HuffmanNode node) {
-        return null;
+   
+    public Map<Character, String> getPrefixes() {
+        return this.map;
     }
+
     
     /**
      * This method creates a minimum priority queue where each unique 
@@ -53,31 +52,29 @@ public class HuffmanTree {
      * top)
      */
     public PriorityQueue<HuffmanNode> buildMinHeap(char[] x, int[] y) {
-        int n = input.getNroOfUniqueChars();
-        PriorityQueue q = new PriorityQueue<>(n, new HuffmanComparator()); 
+        int n = input.getNroOfUniqueCharacters();
+
+        PriorityQueue<HuffmanNode> q = new PriorityQueue<>(n, new HuffmanComparator()); 
   
-        for (int i = 0; i < n; i++) { 
-            
+        for (int i = 0; i < n; i++) {             
             HuffmanNode node = new HuffmanNode(); 
-  
-            node.c = x[i]; 
-            node.freq = y[i]; 
-  
-            node.left = null; 
-            node.right = null; 
-  
-            q.add(node); 
+            node.setChar(x[i]);
+            node.setFreq(y[i]);
             
-          
+            node.setLeftNode(null);
+            node.setRightNode(null);
+            
+            q.add(node); 
         }
         return q;
     }
     
-    //metodi ottaa inputtina array (character, frequency -> palauttaa priorityququen)
     
     /**
      * This method creates new internal nodes to the min heap. When steps
      * in the method are completed the heap contains only one node. 
+     * @param PriorityQueue where all Huffman nodes are leaves
+     * @return the root node that is left in the end
      */
     public HuffmanNode createInternalNodes(PriorityQueue<HuffmanNode> q) {
         while (q.size() > 1) { 
@@ -90,21 +87,41 @@ public class HuffmanTree {
   
             HuffmanNode internalNode = new HuffmanNode(); 
 
+            internalNode.setFreq(firstNode.getFreq() + secondNode.getFreq());
+            //INTERNAL NODEN CHARACTER: ei voi olla '-'. Keksi jotain!
+            internalNode.setChar('-');
             
-            internalNode.freq = firstNode.freq + secondNode.freq; 
-            internalNode.c = '-'; 
-  
-            internalNode.left = firstNode; 
+            internalNode.setLeftNode(firstNode);
 
-            internalNode.right = secondNode; 
-  
+            internalNode.setRightNode(secondNode);
+            
             root = internalNode; 
   
             q.add(internalNode); 
         } 
         
-        //FIX THIS
-        return null;
+        return root;
+    }
+    
+    public void buildPrefixes(HuffmanNode root, String s) {
+        
+        if (root == null) {
+            return;
+        }    
+         
+        if (root.getLeft() == null && root.getRight() == null
+                //TÄTÄ IS LETTERIÄ PITÄÄ MUUTTAA JOTENKIN
+            && Character.isLetter(root.getChar())) { 
+  
+            map.put(root.getChar(), s);
+            return; 
+        } 
+        buildPrefixes(root.getLeft(), s + "0"); 
+        buildPrefixes(root.getRight(), s + "1"); 
+        
+        
+        
+        
     }
     
 }
