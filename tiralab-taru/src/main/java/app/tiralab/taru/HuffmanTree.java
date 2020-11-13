@@ -17,9 +17,6 @@ public class HuffmanTree {
     Map<Character, String> map;
     
     public HuffmanTree(Input text) {
-        //this.n = this.input.getNroOfUniqueChars();
-        //this.charArray = this.input.getCharArray();
-        //this.charFreq = this.input.getCharFreq();
         this.input = text;
         this.root = null;
         this.map = new HashMap<Character, String>();
@@ -39,17 +36,10 @@ public class HuffmanTree {
         
     }
     
-   
-    public Map<Character, String> getPrefixes() {
-        return this.map;
-    }
-
-    
     /**
      * This method creates a minimum priority queue where each unique 
-     * character is a leaf node.
-     * @return min priority queue (heap where least frequent character is at 
-     * top)
+     * character (represented by a HuffmanNode) is a leaf node.
+     * @return min priority queue (heap where least frequent character is first
      */
     public PriorityQueue<HuffmanNode> buildMinHeap(char[] x, int[] y) {
         int n = input.getNroOfUniqueCharacters();
@@ -69,9 +59,8 @@ public class HuffmanTree {
         return q;
     }
     
-    
     /**
-     * This method creates new internal nodes to the min heap. When steps
+     * This method creates new internal nodes to the minimum heap. When steps
      * in the method are completed the heap contains only one node. 
      * @param PriorityQueue where all Huffman nodes are leaves
      * @return the root node that is left in the end
@@ -88,8 +77,10 @@ public class HuffmanTree {
             HuffmanNode internalNode = new HuffmanNode(); 
 
             internalNode.setFreq(firstNode.getFreq() + secondNode.getFreq());
-            //INTERNAL NODEN CHARACTER: ei voi olla '-'. Keksi jotain!
-            internalNode.setChar('-');
+            
+            //Internal node is not given any value:
+            //TSEKKAA TÄMÄ
+            internalNode.setChar('\u0000');
             
             internalNode.setLeftNode(firstNode);
 
@@ -103,6 +94,12 @@ public class HuffmanTree {
         return root;
     }
     
+    /**
+     * This method builds a unique prefix for each unique character.
+     * @param root Root node 
+     * @param s String Used in the recursive method to allocate the prefix 
+     * for each character
+     */
     public void buildPrefixes(HuffmanNode root, String s) {
         
         if (root == null) {
@@ -112,16 +109,22 @@ public class HuffmanTree {
         if (root.getLeft() == null && root.getRight() == null
                 //TÄTÄ IS LETTERIÄ PITÄÄ MUUTTAA JOTENKIN
             && Character.isLetter(root.getChar())) { 
-  
+            //&& root.getChar is not null { 
+                
             map.put(root.getChar(), s);
             return; 
         } 
         buildPrefixes(root.getLeft(), s + "0"); 
-        buildPrefixes(root.getRight(), s + "1"); 
-        
-        
-        
-        
+        buildPrefixes(root.getRight(), s + "1");         
     }
     
+    
+    /**
+     * Getter for the prefixes.
+     * @return Map with Character-String -pairs where the String is the prefix
+     */
+    public Map<Character, String> getPrefixes() {
+        return this.map;
+    }
+
 }

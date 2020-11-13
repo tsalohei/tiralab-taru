@@ -27,38 +27,11 @@ public class Main {
         //annetaan Output-oliolle root ja map, ja sitten tulostetaan...
         */
         
+        char c = 'h';
+        System.out.println((int) c);
         
-        
-        int[] intArray = new int[]{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,1,0,0,0,0,0,0,0,0,0,0,5};
-        
-       // public ArrayList<CharacterObject> createCharacterObjectList(int[] intArray) {
-        ArrayList<CharacterObject> list = new ArrayList<>();
-        for (int i = 0; i < intArray.length; i++) { 
-         
-            if (i > 31 && intArray[i] > 0) { //visible ascii characters start from index 32
-                char c = (char) (i);
-                int j = intArray[i];
-                CharacterObject co = new CharacterObject(c, j);
-                list.add(co);
-            }
-        }
-        Collections.sort(list);
-        
-        
-        
-        
-        
-        
-        
-        for (CharacterObject co : list) {
-            System.out.println(co.getCharacter() + ", " + co.getFrequency());
-        }
-        
-        
-        
-        
-        
-        
+        //CharMatcher
+        //https://guava.dev/releases/19.0/api/docs/com/google/common/base/CharMatcher.html
         
         
     }    

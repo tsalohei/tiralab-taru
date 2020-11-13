@@ -9,12 +9,11 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 /**
- * This class handles String input (later also text files). Stuff given to 
- * a HuffmanTree.
+ * This class handles String input (later also text files). The input is given
+ * to HuffmanTree.
  */
 public class Input {
     
-    //https://www.ascii-code.com/
     
     private final String s;
     private char[] chars;
@@ -25,32 +24,66 @@ public class Input {
         this.s = input;
     }
     
-    
+    /**
+     * This method makes two arrays based on input. A char array contains the 
+     * unique characters in the input, and an integer array their respective 
+     * frequencies.
+     */
     public void calculate() {
         int[] intarray = makeArrayFromString(); 
         ArrayList<CharacterObject> arraylist = createCharacterObjectList(intarray);
         setCharFreq(arraylist);
         setCharArray(arraylist);
-        this.n = arraylist.size();
-        
+        this.n = arraylist.size();    
     }
     
+    /**
+     * This method takes a String as input and makes an array out of it. The
+     * array has information about what the unique characters in the String are,
+     * and what is their frequency in the String. 
+     * @see https://www.ascii-code.com/
+     * @param s input String
+     * @return array with the abovementioned information
+     */ 
+    public int[] makeArrayFromString() {
+        int[] array = new int[256]; 
+        for (int i = 0; i < s.length(); i++) {
+            char current = s.charAt(i);            
+            int index = (int) current;
+            array[index]++; 
+        }
+        return array;
+    } 
+    
+    /**
+     * This method returns a char array.
+     * @return char array
+     */
     public char[] getCharArray() {
         return this.chars;
     }
     
+    /**
+     * This method returns an integer array.
+     * @return int array
+     */
     public int[] getCharFreq() {
         return this.frequencies;
     } 
     
+    /**
+     * This method returns the number of unique characters in the input.
+     * @return integer
+     */
     public int getNroOfUniqueCharacters() {
         return this.n;
     }
     
     /**
-     * Creates an array with the unique characters in the input. If there are 
-     * for example 4 unique characters, the length of the array will be 4.
-     * @param intArray Index means which character is in question, and value 
+     * Creates a char array. One unique character occupies one index in array. 
+     * If there are for example 4 unique characters, the length of the array 
+     * will be 4. Characters are in increasing order of frequency.
+     * @param list Index means which character is in question, and value 
      * tells the frequency of the alphabet. 
      */
     public void setCharArray(ArrayList<CharacterObject> list) {
@@ -58,10 +91,15 @@ public class Input {
         this.chars = new char[n]; 
         for (int i = 0; i < n; i++) {
             chars[i] = list.get(i).getCharacter();
-        }   
-        
+        }       
     }
-    //JATKA TÄSTÄ!!!!!!!
+    
+    /**
+     * Creates an integer array. Length of the array equals the amount of unique
+     * characters. Value equals the frequency of one unique character in input. 
+     * The values are in increasing order of frequency.
+     * @param list 
+     */
     public void setCharFreq(ArrayList<CharacterObject> list) {
         int n = list.size();
         this.frequencies = new int[n]; 
@@ -89,23 +127,5 @@ public class Input {
         }
         Collections.sort(list);
         return list;
-    }
-    
-    /**
-     * This method takes a String as input and makes an array out of it. The
-     * array has information about what the unique characters in the String are,
-     * and what is their frequency in the String. 
-     * @see https://www.ascii-code.com/
-     * @param s input String
-     * @return array with the abovementioned information
-     */ 
-    public int[] makeArrayFromString() {
-        int[] array = new int[256]; 
-        for (int i = 0; i < s.length(); i++) {
-            char current = s.charAt(i);            
-            int index = (int) current;
-            array[index]++; 
-        }
-        return array;
-    }   
+    }     
 }

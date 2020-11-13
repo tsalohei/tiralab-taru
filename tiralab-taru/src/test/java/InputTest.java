@@ -5,33 +5,24 @@ import java.util.List;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 
-/**
- *
- * @author taru
- */
 public class InputTest {
      
-    @Test //TOIMII
+    @Test 
     public void charFrequency() {
         Input input = new Input("aabbabca");
         input.calculate();
         assertArrayEquals(new int[]{1, 3, 4}, input.getCharFreq()); 
     }
    
-    @Test //TOIMII
+    @Test 
     public void getCharArrayTest() {
         Input input = new Input("aabbabca");
         input.calculate();
         assertArrayEquals(new char[]{'c', 'b', 'a'}, input.getCharArray());       
     }
     
-    @Test //TOIMII
+    @Test 
     public void createCharacterObjectListTest() {
         Input input = new Input("aaab");
         int[] intArray = new int[256];
@@ -42,7 +33,7 @@ public class InputTest {
         assertEquals('a', list.get(1).getCharacter());
     }    
     
-    @Test //TOIMII
+    @Test 
     public void makeArrayFromStringTest() {
         Input input = new Input("aabbabca"); 
         int[] intArray = input.makeArrayFromString(); 
@@ -50,7 +41,7 @@ public class InputTest {
     }
     
     
-    @Test //TOIMII
+    @Test 
     public void getNroOfUniqueCharacters() {
         Input input = new Input("aabbabca");
         input.calculate();
