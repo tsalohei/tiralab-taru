@@ -4,6 +4,10 @@
 
 [Project description](https://github.com/tsalohei/tiralab-taru/blob/main/documentation/project_description.md)
 
+[Implementation document](https://github.com/tsalohei/tiralab-taru/blob/main/documentation/implementation.md)
+
+[Testing document](https://github.com/tsalohei/tiralab-taru/blob/main/documentation/testing.md)
+
 ###  Weekly reports
 
 [Week 1](https://github.com/tsalohei/tiralab-taru/blob/main/documentation/weekly_reports/week1.md)
@@ -11,6 +15,8 @@
 [Week 2](https://github.com/tsalohei/tiralab-taru/blob/main/documentation/weekly_reports/week2.md)
 
 [Week 3](https://github.com/tsalohei/tiralab-taru/blob/main/documentation/weekly_reports/week3.md)
+
+[Week 4](https://github.com/tsalohei/tiralab-taru/blob/main/documentation/weekly_reports/week4.md)
 
 ## Terminal commands
 
