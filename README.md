@@ -32,7 +32,7 @@ Create test coverage report:
 
 	mvn test jacoco:report
 
-View the created report by opening a file named index.html in directory /target/site/jacoco.
+View the created report by opening a file named index.html in directory target/site/jacoco.
 
 ### Checkstyle
 
@@ -40,4 +40,4 @@ Run checks defined in file [checkstyle.xml](https://github.com/tsalohei/tiralab-
 
 	mvn jxr:jxr checkstyle:checkstyle
 
-The Checkstyle report can be viewed by opening file /target/site/checkstyle.html with browser.
+The Checkstyle report can be viewed by opening file target/site/checkstyle.html with browser.
