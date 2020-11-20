@@ -1,16 +1,12 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package app.tiralab.taru;
 
 import java.util.ArrayList;
 import java.util.Collections;
 
 /**
- * This class handles String input (later also text files). The input is given
- * to HuffmanTree.
+ * Class input handles the String input. This class processes information about
+ * the String so that the information is available in the correct format to the 
+ * HuffmanTree. 
  */
 public class Input {
     
@@ -127,5 +123,9 @@ public class Input {
         }
         Collections.sort(list);
         return list;
-    }     
+    }
+    
+    public String getString() {
+        return this.s;
+    }
 }

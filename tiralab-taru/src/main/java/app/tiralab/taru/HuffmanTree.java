@@ -14,7 +14,7 @@ public class HuffmanTree {
     private char[] charArray;
     private int[] charFreq;
     private HuffmanNode root;
-    Map<Character, String> map;
+    private Map<Character, String> map;
     
     public HuffmanTree(Input text) {
         this.input = text;
@@ -78,8 +78,6 @@ public class HuffmanTree {
 
             internalNode.setFreq(firstNode.getFreq() + secondNode.getFreq());
             
-            //Internal node is not given any value:
-            //TSEKKAA TÄMÄ
             internalNode.setChar('\u0000');
             
             internalNode.setLeftNode(firstNode);
@@ -106,10 +104,9 @@ public class HuffmanTree {
             return;
         }    
          
-        if (root.getLeft() == null && root.getRight() == null
-                //TÄTÄ IS LETTERIÄ PITÄÄ MUUTTAA JOTENKIN
-            && Character.isLetter(root.getChar())) { 
-            //&& root.getChar is not null { 
+        if (root.getLeft() == null && root.getRight() == null  
+            && ((int) root.getChar() > 31)) { //31-->visible ascii values
+            
                 
             map.put(root.getChar(), s);
             return; 

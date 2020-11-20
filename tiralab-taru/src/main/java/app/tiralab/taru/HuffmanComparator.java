@@ -3,14 +3,9 @@ package app.tiralab.taru;
 import java.util.Comparator;
 
 /**
- *
- * @author taru
+ * Class that determines the order of two HuffmanNode instances.
  */
 public class HuffmanComparator implements Comparator<HuffmanNode> {
-    
-    //compares two Huffman nodes and returs a positive integer is node2 has a
-    //smaller frequency compared with node1, a negative integer if node2 has 
-    //larger frequency than node1, and 0 if frequencies are the same
     
     /**
      * Method compares two Huffman nodes. 

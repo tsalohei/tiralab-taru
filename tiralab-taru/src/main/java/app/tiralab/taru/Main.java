@@ -1,38 +1,29 @@
 package app.tiralab.taru;
 
-import java.util.ArrayList; //POISTA
-import java.util.Collections; // POISTA
-import java.util.Comparator;
 import java.util.Map;
-import java.util.PriorityQueue;
-import java.util.Scanner;
 
-/**
- *
- * @author taru
- */
-//https://www.geeksforgeeks.org/huffman-coding-greedy-algo-3/
-//https://www.programiz.com/dsa/huffman-coding
-
-public class Main {
-    public static void main(String[] args) {
+public class Main { 
+    public static void main(String[] args)  {
+               
+        String fileName = "book.txt";
         
-        /*
-        HuffmanTree tree = new HuffmanTree(new Input("aabbabca"));
+        // if run from command line with argument
+        if (args.length > 1) {
+            fileName = args[1];
+        }
         
+        FileInput fileInput = new FileInput();
+        
+        Input input = new Input(fileInput.getFile(fileName));
+                
+        HuffmanTree tree = new HuffmanTree(input);
+              
         HuffmanNode root = tree.create();
         
         Map<Character, String> map = tree.getPrefixes();
         
-        //annetaan Output-oliolle root ja map, ja sitten tulostetaan...
-        */
+        Output output = new Output(map, input);
         
-        char c = 'h';
-        System.out.println((int) c);
-        
-        //CharMatcher
-        //https://guava.dev/releases/19.0/api/docs/com/google/common/base/CharMatcher.html
-        
-        
+        output.process();   
     }    
 }
