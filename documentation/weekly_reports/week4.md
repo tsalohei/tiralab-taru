@@ -8,3 +8,4 @@ Unclear things in my mind at the moment:
   * In order to be able to decompress the compressed file I would need to add header information to the output file. I think I will first implement my own data structures before proceeding with this.
   * Bytes vs. bits: now the file size actually increases when each character gets a code that is saved as characters (e.g. ‘A’ is ‘1001’). So saving 8 bits requires in fact 4*8 bits. I guess there are some existing libraries in Java to handle this - can these be used? Or is implementing own data structures necessary here too?
 
+Hours used this week: 18h
