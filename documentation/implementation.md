@@ -7,3 +7,6 @@ The application does not have a user interface (at least yet). The user is expec
   * Class HuffmanTree gets an instance of Input in the constructor parameter. This class builds a tree structure, and returns the root node for the tree.
   * Class Output is responsible for saving the coded input into a file. 
 
+## Sources and references
+
+The materials from course "Tietorakenteet ja algoritmit, 2019" have been used when writing own data structures: [link](https://tira-s19.mooc.fi/materiaali) to material.
