@@ -6,14 +6,12 @@ package app.tiralab.taru;
 
 public class MyMinHeap {
     
-    private HuffmanComparator hc; //this is needed in the original implementation using PriorityQueue
+    private HuffmanComparator hc;
     private int capacity;
     private int currentSize;
     private HuffmanNode[] array;
     
-    //insert new element
-    //checkMin: check and return value of min
-    //deleteMin: check and return value of min, and delete  
+    
     
     
     public MyMinHeap(int capacity, HuffmanComparator hc) {
@@ -41,7 +39,7 @@ public class MyMinHeap {
     }
     
     public HuffmanNode deleteMin() {
-        //JATKA TÄSTÄ!!!!
+        //TODO
         return null;
     }
     

@@ -88,24 +88,4 @@ public class Output {
             e.printStackTrace();
         }
     }
-    
-    
-    /* Can be deleted
-    public void printPrefixes() {
-        for (Map.Entry<Character, String> entry : map.entrySet()) {
-            System.out.println("Key: " + entry.getKey() + ", Value: " + entry.getValue());
-        }
-    }
-    
-    public void printCodedInput() {
-        String s = this.input.getString();
-        String codedInput = "";
-        
-        for (int i = 0; i < s.length(); i++) {
-            char c = s.charAt(i);
-            codedInput = codedInput + findPrefixForCharacter(c);
-        }
-        System.out.println(codedInput);
-    }
-    */
 }

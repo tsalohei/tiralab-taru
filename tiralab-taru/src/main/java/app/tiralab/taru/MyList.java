@@ -55,6 +55,6 @@ public class MyList {
     }
     
     public void sort() {
-        //lomitusjärjestäminen, "merge sort" would be efficient
+        //lomitusjärjestäminen, "merge sort"?
     }
 }
