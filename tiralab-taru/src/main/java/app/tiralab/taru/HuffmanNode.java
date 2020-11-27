@@ -9,7 +9,12 @@ public class HuffmanNode {
     private HuffmanNode left;
     private HuffmanNode right;
     
-    HuffmanNode () {
+    public HuffmanNode () {
+    }
+    
+    public HuffmanNode(char c, int f) {
+        this.c = c;
+        this.freq = f;
     }
     
     public void setChar(char c) {

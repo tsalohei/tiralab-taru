@@ -10,17 +10,17 @@ package app.tiralab.taru;
 
 public class MyList {
     
-    private CharacterObject[] t;
+    private CharacterObject[] array;
     private int n;
-    private int k;
+    private int index;
     
     /**
      * Constructor. The initial size of the list is 10.
      */
     public MyList() {
         n = 10;
-        t = new CharacterObject[n];
-        k = 0;
+        array = new CharacterObject[n];
+        index = 0;
     }
     
     /**
@@ -29,26 +29,32 @@ public class MyList {
      * CharacterObject is added to the list. If the list is full, the size of 
      * the list is doubled by making a new list and copying the values from the 
      * full list to the new list.
+     * PROBLEM: NO RESIZING
      * @param co CharacterObject to be added to the list
      */
     public void add(CharacterObject co) {
-        if (k == n) {
+        if (index == n) {
             CharacterObject[] u = new CharacterObject[2 * n];
             for (int i = 0; i < n; i++) {
-                u[i] = t[i];
+                u[i] = array[i];
             }
-            t = u;
+            array = u;
             n = 2 * n;
         }
-        t[k] = co;
-        k++;
+        array[index] = co;
+        index++;
     }
     
-    public int getSize() {
-        return -99;
+    /**
+     * Returns the CharacterObject instance at the index given as parameter.
+     * @param a index
+     * @return CharacterObject instance at index
+     */
+    public CharacterObject get(int a) {
+        return array[a];
     }
     
     public void sort() {
-        
+        //lomitusjärjestäminen, "merge sort" would be efficient
     }
 }

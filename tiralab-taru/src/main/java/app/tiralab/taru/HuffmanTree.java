@@ -39,7 +39,7 @@ public class HuffmanTree {
     /**
      * This method creates a minimum priority queue where each unique 
      * character (represented by a HuffmanNode) is a leaf node.
-     * @return min priority queue (heap where least frequent character is first
+     * @return min priority queue (heap where least frequent character is first)
      */
     public PriorityQueue<HuffmanNode> buildMinHeap(char[] x, int[] y) {
         int n = input.getNroOfUniqueCharacters();
