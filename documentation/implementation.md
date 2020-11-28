@@ -10,3 +10,5 @@ The application does not have a user interface (at least yet). The user is expec
 ## Sources and references
 
 The materials from course "Tietorakenteet ja algoritmit, 2019" have been used when writing own data structures: [link](https://tira-s19.mooc.fi/materiaali) to material.
+
+Data structures and algorithm analysis in Java. Addison Wesley Longman. Mark Allen Weiss, 1999.
