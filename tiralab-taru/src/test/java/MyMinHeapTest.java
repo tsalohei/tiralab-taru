@@ -68,5 +68,15 @@ public class MyMinHeapTest {
         assertEquals(null, heap.deleteMin());
     }
    
-    //TODO getSizeTest
+    @Test
+    public void getSizeTest() {
+        MyMinHeap heap = new MyMinHeap(5, new HuffmanComparator());        
+        assertEquals(0, heap.getSize());
+        
+        heap.insert(new HuffmanNode('d', 4));
+        assertEquals(1, heap.getSize());
+        
+        heap.insert(new HuffmanNode('f', 6));
+        assertEquals(2, heap.getSize());
+    }
 }
