@@ -2,7 +2,7 @@ package app.tiralab.taru;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.PriorityQueue;
+//import java.util.PriorityQueue;
 
 /**
  * This class builds a Huffman Tree based on input.
@@ -21,7 +21,20 @@ public class HuffmanTree {
         this.root = null;
         this.map = new HashMap<Character, String>();
     }
-    
+
+        public HuffmanNode create() {
+            input.calculate();
+            this.charArray = input.getCharArray();
+            this.charFreq = input.getCharFreq();
+
+            MyMinHeap q = buildMinHeap(this.charArray, this.charFreq);
+            HuffmanNode rootNode = createInternalNodes(q);
+
+            buildPrefixes(rootNode, "");
+
+            return rootNode;
+        }
+    /* //with java's priorityqueue
     public HuffmanNode create() {
         input.calculate();
         this.charArray = input.getCharArray();
@@ -32,15 +45,16 @@ public class HuffmanTree {
      
         buildPrefixes(rootNode, "");
         
-        return rootNode;
-        
+        return rootNode;      
     }
+    */
     
     /**
      * This method creates a minimum priority queue where each unique 
      * character (represented by a HuffmanNode) is a leaf node.
      * @return min priority queue (heap where least frequent character is first)
      */
+    /*
     public PriorityQueue<HuffmanNode> buildMinHeap(char[] x, int[] y) {
         int n = input.getNroOfUniqueCharacters();
 
@@ -59,12 +73,66 @@ public class HuffmanTree {
         return q;
     }
     
+    */ 
+    //WITH OWN MYMINHEAP
+    /**
+     * This method creates a minimum priority queue where each unique 
+ character (represented by a HuffmanNode) is a leaf node.
+     * @param x
+     * @param y
+     * @return min priority queue (heap where least frequent character is first)
+     **/
+    public MyMinHeap buildMinHeap(char[] x, int[] y) {
+        int n = input.getNroOfUniqueCharacters();
+
+        MyMinHeap q = new MyMinHeap(n, new HuffmanComparator()); 
+  
+        for (int i = 0; i < n; i++) {             
+            HuffmanNode node = new HuffmanNode(); 
+            node.setChar(x[i]);
+            node.setFreq(y[i]);
+            
+            node.setLeftNode(null);
+            node.setRightNode(null);
+            
+            q.insert(node); 
+        }
+        return q;
+    }
+    
     /**
      * This method creates new internal nodes to the minimum heap. When steps
      * in the method are completed the heap contains only one node. 
      * @param PriorityQueue where all Huffman nodes are leaves
      * @return the root node that is left in the end
      */
+    public HuffmanNode createInternalNodes(MyMinHeap q) {
+        while (q.getSize() > 1) { 
+            
+            HuffmanNode firstNode = q.checkMin(); 
+            q.deleteMin(); 
+  
+            HuffmanNode secondNode = q.checkMin(); 
+            q.deleteMin(); 
+  
+            HuffmanNode internalNode = new HuffmanNode(); 
+
+            internalNode.setFreq(firstNode.getFreq() + secondNode.getFreq());
+            
+            internalNode.setChar('\u0000');
+            
+            internalNode.setLeftNode(firstNode);
+
+            internalNode.setRightNode(secondNode);
+            
+            root = internalNode; 
+  
+            q.insert(internalNode); 
+        } 
+        
+        return root;
+    }
+    /*
     public HuffmanNode createInternalNodes(PriorityQueue<HuffmanNode> q) {
         while (q.size() > 1) { 
             
@@ -91,6 +159,7 @@ public class HuffmanTree {
         
         return root;
     }
+    */
     
     /**
      * This method builds a unique prefix for each unique character.

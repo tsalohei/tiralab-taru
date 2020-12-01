@@ -99,6 +99,10 @@ public class MyMinHeap {
         this.array[hole] = tmp;
     }
     
+    public int getSize() {
+        return this.currentSize;
+    }
+    
     
     /**
      * Returns the MyMinHeap as an array of HuffmanNodes
