@@ -40,8 +40,32 @@ public class MyMinHeapTest {
     }
     
     @Test
+    public void isEmptyTest() {
+        MyMinHeap heap = new MyMinHeap(5, new HuffmanComparator());
+        
+        assertEquals(true, heap.isEmpty());
+        
+        heap.insert(new HuffmanNode('d', 4));
+        
+        assertEquals(false, heap.isEmpty());
+    }
+    
+    @Test
     public void deleteMinTest() {
-        //TODO
+        MyMinHeap heap = new MyMinHeap(5, new HuffmanComparator());
+        
+        heap.insert(new HuffmanNode('d', 4));
+        heap.insert(new HuffmanNode('f', 6));
+        heap.insert(new HuffmanNode('i', 9));
+        heap.insert(new HuffmanNode('b', 2));
+        heap.insert(new HuffmanNode('c', 3));
+        
+        assertEquals(2, heap.deleteMin().getFreq());
+        assertEquals(3, heap.deleteMin().getFreq());
+        assertEquals(4, heap.deleteMin().getFreq());
+        assertEquals(6, heap.deleteMin().getFreq());
+        assertEquals(9, heap.deleteMin().getFreq());
+        assertEquals(null, heap.deleteMin());
     }
    
     
