@@ -20,6 +20,8 @@
 
 [Week 5](https://github.com/tsalohei/tiralab-taru/blob/main/documentation/weekly_reports/week5.md)
 
+[Week 6](https://github.com/tsalohei/tiralab-taru/blob/main/documentation/weekly_reports/week6.md)
+
 ## Terminal commands
 
 ### Javadoc
