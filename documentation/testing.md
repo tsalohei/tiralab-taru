@@ -1,3 +1,6 @@
 # Testing documentation
 
-Currently the performance of the algorithm is not good because the prefix codes (0s and 1s) are saved as Characters, so there are actually more characters used for the prefix codes than for the original input.
+I have done testing with 2 different sized versions of Tolkien's Hobbit book. Results:
+
+Hobbit 1000 rows: from 926 bytes to 452 bytes after compression (49%)
+Hobbit full: from 531147 bytes to 278034 bytes after compression (52%)
