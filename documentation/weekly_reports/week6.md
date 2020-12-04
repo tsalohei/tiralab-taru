@@ -4,6 +4,8 @@ This week I wrote class MyMinHeap, did tests for it and replaced Java's Priority
 
 I realized that I have to make changes to class Input if I want to support also other than ASCII characters smoothly. I made a test with 2 different files on how the compression is performing. I made preliminary user instructions and started reading about how to implement the decompression part. Made code review nro 2. 
 
+Next I will focus on the decompression part.
+
 Hours used: 22h
 
 
