@@ -8,6 +8,8 @@
 
 [Testing document](https://github.com/tsalohei/tiralab-taru/blob/main/documentation/testing.md)
 
+[User instructions](https://github.com/tsalohei/tiralab-taru/blob/main/documentation/user_instructions.md)
+
 ###  Weekly reports
 
 [Week 1](https://github.com/tsalohei/tiralab-taru/blob/main/documentation/weekly_reports/week1.md)
