@@ -35,7 +35,7 @@ public class OutputTest {
         
         when(tree.getPrefixes()).thenReturn(myMap);
 
-        output = new Output(tree.getPrefixes(), input);
+        output = new Output(tree.getPrefixes(), input, "output-file");
         
     }
     
