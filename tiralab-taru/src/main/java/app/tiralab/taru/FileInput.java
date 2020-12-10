@@ -10,16 +10,20 @@ import java.util.Scanner;
  */
 public class FileInput {
     
-    public String getFile(String filename) {      
-        // TODO use StringBuilder instead of , inputString = inputString + data;
-        
-        String inputString = "";    
+    /**
+     * Returns the content of specified file as String.
+     * @param filename
+     * @return String
+     */
+    public String getFile(String filename) {              
+        StringBuilder builder = new StringBuilder();
         try {
             File myFileObj = new File(filename);
             Scanner myScanner = new Scanner(myFileObj);
             while (myScanner.hasNextLine()) {
                 String data = myScanner.nextLine();
-                inputString = inputString + data;
+                
+                builder.append(data);
             }
             myScanner.close();
         } catch (FileNotFoundException e) {
@@ -27,6 +31,6 @@ public class FileInput {
             e.printStackTrace();
         }
         
-        return inputString;
+        return builder.toString();
     }
 }

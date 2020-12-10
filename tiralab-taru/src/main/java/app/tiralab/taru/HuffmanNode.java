@@ -1,9 +1,11 @@
 package app.tiralab.taru;
 
+import java.io.Serializable;
+
 /**
- * This class represents one node used in a Huffman Tree (minimum heap).
+ * This class represents one node used in a HuffmanTree.
  */
-public class HuffmanNode {
+public class HuffmanNode implements Serializable {
     private char c;
     private int freq;
     private HuffmanNode left;
@@ -47,5 +49,9 @@ public class HuffmanNode {
     
     public HuffmanNode getRight() {
         return this.right;
+    }
+    
+    public boolean isLeafNode() {
+        return this.left == null && this.right == null;
     }
 }

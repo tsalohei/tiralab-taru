@@ -2,6 +2,7 @@
 import app.tiralab.taru.HuffmanNode;
 import app.tiralab.taru.HuffmanTree;
 import app.tiralab.taru.Input;
+import app.tiralab.taru.InputText;
 import app.tiralab.taru.MyMinHeap;
 import java.util.Map;
 //import java.util.PriorityQueue;
@@ -19,8 +20,8 @@ public class HuffmanTreeTest {
     
     @Before
     public void setup() {
-        this.input = new Input("BCAADDDCCACACAC");
-        input.calculate();
+        this.input = new InputText("BCAADDDCCACACAC");
+        //input.calculate();
         this.tree = new HuffmanTree(input);
         this.charArray = new char[]{'B','D', 'A', 'C'};
         this.intArray = new int[]{1, 3, 5, 6};
@@ -127,8 +128,8 @@ public class HuffmanTreeTest {
     @Test
     public void buildPrefixesTest2() {
        
-        Input input2 = new Input("A_DEAD_DAD_CEDED_A_BAD_BABE_A_BEADED_ABACA_BED");
-        input2.calculate();
+        InputText input2 = new InputText("A_DEAD_DAD_CEDED_A_BAD_BABE_A_BEADED_ABACA_BED");
+        //input2.calculate();
         HuffmanTree tree2 = new HuffmanTree(input2);
         char[] charArray2 = new char[]{'C', 'B', 'E', '_', 'D', 'A'};
         int []intArray2 = new int[]{2, 6, 7, 10, 10, 11};

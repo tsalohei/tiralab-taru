@@ -2,7 +2,6 @@ package app.tiralab.taru;
 
 import java.util.HashMap;
 import java.util.Map;
-//import java.util.PriorityQueue;
 
 /**
  * This class builds a Huffman Tree based on input.
@@ -21,60 +20,23 @@ public class HuffmanTree {
         this.root = null;
         this.map = new HashMap<Character, String>();
     }
-
-        public HuffmanNode create() {
-            input.calculate();
-            this.charArray = input.getCharArray();
-            this.charFreq = input.getCharFreq();
-
-            MyMinHeap q = buildMinHeap(this.charArray, this.charFreq);
-            HuffmanNode rootNode = createInternalNodes(q);
-
-            buildPrefixes(rootNode, "");
-
-            return rootNode;
-        }
-    /* //with java's priorityqueue
-    public HuffmanNode create() {
-        input.calculate();
-        this.charArray = input.getCharArray();
-        this.charFreq = input.getCharFreq();
-        
-        PriorityQueue<HuffmanNode> q = buildMinHeap(this.charArray, this.charFreq);
-        HuffmanNode rootNode = createInternalNodes(q);
-     
-        buildPrefixes(rootNode, "");
-        
-        return rootNode;      
-    }
-    */
     
     /**
-     * This method creates a minimum priority queue where each unique 
-     * character (represented by a HuffmanNode) is a leaf node.
-     * @return min priority queue (heap where least frequent character is first)
+     * 
+     * @return HuffmanNode which is the root node for HuffmanTree 
      */
-    /*
-    public PriorityQueue<HuffmanNode> buildMinHeap(char[] x, int[] y) {
-        int n = input.getNroOfUniqueCharacters();
+    public HuffmanNode create() {
+        this.charArray = input.getCharArray();
+        this.charFreq = input.getCharFreq();
 
-        PriorityQueue<HuffmanNode> q = new PriorityQueue<>(n, new HuffmanComparator()); 
-  
-        for (int i = 0; i < n; i++) {             
-            HuffmanNode node = new HuffmanNode(); 
-            node.setChar(x[i]);
-            node.setFreq(y[i]);
-            
-            node.setLeftNode(null);
-            node.setRightNode(null);
-            
-            q.add(node); 
-        }
-        return q;
+        MyMinHeap q = buildMinHeap(this.charArray, this.charFreq);
+        HuffmanNode rootNode = createInternalNodes(q);
+
+        buildPrefixes(rootNode, "");
+
+        return rootNode;
     }
     
-    */ 
-    //WITH OWN MYMINHEAP
     /**
      * This method creates a minimum priority queue where each unique 
  character (represented by a HuffmanNode) is a leaf node.
@@ -83,7 +45,8 @@ public class HuffmanTree {
      * @return min priority queue (heap where least frequent character is first)
      **/
     public MyMinHeap buildMinHeap(char[] x, int[] y) {
-        int n = input.getNroOfUniqueCharacters();
+        //int n  = input.getNroOfUniqueCharacters();
+        int n = this.input.getCharArray().length;
 
         MyMinHeap q = new MyMinHeap(n, new HuffmanComparator()); 
   
@@ -132,35 +95,7 @@ public class HuffmanTree {
         
         return root;
     }
-    /*
-    public HuffmanNode createInternalNodes(PriorityQueue<HuffmanNode> q) {
-        while (q.size() > 1) { 
-            
-            HuffmanNode firstNode = q.peek(); 
-            q.poll(); 
-  
-            HuffmanNode secondNode = q.peek(); 
-            q.poll(); 
-  
-            HuffmanNode internalNode = new HuffmanNode(); 
-
-            internalNode.setFreq(firstNode.getFreq() + secondNode.getFreq());
-            
-            internalNode.setChar('\u0000');
-            
-            internalNode.setLeftNode(firstNode);
-
-            internalNode.setRightNode(secondNode);
-            
-            root = internalNode; 
-  
-            q.add(internalNode); 
-        } 
         
-        return root;
-    }
-    */
-    
     /**
      * This method builds a unique prefix for each unique character.
      * @param root Root node 
@@ -193,4 +128,19 @@ public class HuffmanTree {
         return this.map;
     }
 
+    /**
+     * Returns the root of the HuffmanTree
+     * @return root 
+     */
+    public HuffmanNode getRoot() {
+        return this.root;
+    }
+    
+    public char[] getCharArray() {
+        return this.charArray;
+    }
+    
+    public int[] getFreqArray() {
+        return this.charFreq;
+    }
 }

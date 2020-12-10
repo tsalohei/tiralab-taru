@@ -6,10 +6,15 @@ import java.util.Map;
 
 public class Main { 
     public static void main(String[] args) throws IOException   {
+        
+        
+        
+        
+        
         //if not run from command line
         String fileName = "book.txt";
 
-        
+        /*
         if (args.length == 0) {
             System.out.println("Welcome to compress your file with Huffman "
                     + "algorithm!");           
@@ -25,20 +30,57 @@ public class Main {
             System.out.println("Error. Too many arguments.");
             System.exit(1);
         }
-        
+        */
         FileInput fileInput = new FileInput();
         
-        Input input = new Input(fileInput.getFile(fileName));
+        InputText input = new InputText(fileInput.getFile(fileName));
+        System.out.println("INPUT TEXT " + input.getString());
         
         HuffmanTree tree = new HuffmanTree(input);
         
         HuffmanNode root = tree.create();
         
-        Map<Character, String> map = tree.getPrefixes();
+        //write root to file?l
         
-        Output output = new Output(map, input, fileName);
+        //delete this map + loop
+        Map<Character, String> debugMap = tree.getPrefixes();
+        for (Map.Entry<Character,String> entry : debugMap.entrySet()) {
+            System.out.println(entry.getKey() + ", " + entry.getValue());
+        }
+        
+        Output output = new Output(tree, input, fileName);
+        System.out.println("ORG PREFIX " + output.createPrefixString());
+        System.out.println("ORG PREFIX " + output.createPrefixString().length());
         
         output.process();
+        
+        
+        //testing Decompression
+        
+        
+        CompressedInput compressedInput = new CompressedInput("book.huff");
+        HuffmanTree treeCompressed = new HuffmanTree(compressedInput);
+        treeCompressed.create();
+        
+        String prefixString = compressedInput.getPrefixString();
+        System.out.println("PREFIXES " + prefixString);
+        Decompress dc = new Decompress(prefixString, treeCompressed); //tree: haetaan getRoot
+        String result = dc.process();
+        System.out.println(result); 
+        
+        /*
+        BitReader bitreader = new BitReader("book.huff");
+        
+        String s1 = output.createPrefixString();
+        System.out.println(s1);
+        
+        String s2 = bitreader.process();
+        System.out.println(s2);
+                
+        Decompress dc = new Decompress(s2, tree); //tree: haetaan getRoot
+        String result = dc.process();
+        System.out.println(result);
+        */
         
     }    
 }

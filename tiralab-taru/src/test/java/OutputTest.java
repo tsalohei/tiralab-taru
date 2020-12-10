@@ -1,6 +1,6 @@
 
 import app.tiralab.taru.HuffmanTree;
-import app.tiralab.taru.Input;
+import app.tiralab.taru.InputText;
 import app.tiralab.taru.Output;
 import java.util.HashMap;
 import java.util.Map;
@@ -20,13 +20,14 @@ public class OutputTest {
     HuffmanTree tree;
     
  
-    Input input;    
+    InputText input;    
     Output output;
     
     
     @Before
     public void setup() {
-        this.input = new Input("BCAADDDCCACACAC");
+        /*
+        this.input = new InputText("BCAADDDCCACACAC");
         Map<Character, String> myMap = new HashMap<>();
         myMap.put('A', "11");
         myMap.put('B', "100");
@@ -36,7 +37,18 @@ public class OutputTest {
         when(tree.getPrefixes()).thenReturn(myMap);
 
         output = new Output(tree.getPrefixes(), input, "output-file");
+        */
+        this.input = new InputText("BCAADDDCCACACAC");
         
+        Map<Character, String> myMap = new HashMap<>();
+        myMap.put('A', "11");
+        myMap.put('B', "100");
+        myMap.put('C', "0");
+        myMap.put('D', "101");
+        
+        when(tree.getPrefixes()).thenReturn(myMap);
+        
+        output = new Output(tree, input, "output-file");
     }
     
     @Test

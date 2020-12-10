@@ -6,17 +6,20 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.nio.ByteBuffer;
 
 
 /**
- * This class is responsible of saving the coded String input (1's and 0's)
- * to file as bits.
+ * This class is responsible of saving the coded String input (for example 
+ * "1001101...") to file as bits.
  */
 public class BitWriter {
     
     private int oneByte;
     private int bitCalculator;
     private OutputStream stream;
+    private int bytesWritten = 0;
+    private int bitsWritten = 0;
     
     /**
      * Constructor for BitWriter
@@ -30,7 +33,7 @@ public class BitWriter {
     }
     
     /**
-     * Writes the bits in a String to file.
+     * Writes the coded String input (for example "100111..") to file as bits.
      * @param s String of 1's and 0's 
      * @throws IOException if 
      */
@@ -42,11 +45,18 @@ public class BitWriter {
                 writeBit(1);
             
             } else {
-                writeBit(0);
+                writeBit(0); 
             }
         }
+        
+        System.out.println("BYTES WRITTEN (string)" + bytesWritten);
+        System.out.println("BITS WRITTEN (string)" + bitsWritten);
     }
-    
+    /**
+     * Writes a bit (represented by an Integer 0 or 1) to file.
+     * @param bit
+     * @throws IOException if writing to file fails
+     */
     private void writeBit(int bit) throws IOException {
         if (bit != 0 && bit != 1) {
             throw new IllegalArgumentException("Can write only 0s and 1s to file");
@@ -54,8 +64,10 @@ public class BitWriter {
             
             this.oneByte = (this.oneByte << 1) | bit;
             this.bitCalculator++;
+            this.bitsWritten++;
             
             if (bitCalculator == 8) {
+                bytesWritten++;
                 
                 this.stream.write(oneByte); 
                 this.oneByte = 0;
@@ -64,13 +76,57 @@ public class BitWriter {
         }
     }
     
-    //if String is not divisible with 8
+    //FIKSI TÄHÄN
+    //if bits don't match 8
     public void stop() throws IOException {
         while (bitCalculator > 0 && bitCalculator <= 8) {
             writeBit(0);
         }
    
         stream.close();
+    }
+    
+    
+    //NEW STUFF 8.12.2020
+    
+    //1. write the int (length of charArray)
+    public void writeNumberOfCharacters(int n) throws IOException {
+        ByteBuffer byteBuffer = ByteBuffer.allocate(4); //4 bytes for one Integer
+        byteBuffer.putInt(n);
+        byte[] byteArray = byteBuffer.array();
+        
+        stream.write(byteArray);
+    }
+    //4
+    public void writeHowManyBits() throws IOException {
+        System.out.println("WRITTEN BIT COUNTER (in BitWriter) " + this.bitsWritten);
+        ByteBuffer byteBuffer = ByteBuffer.allocate(4); //4 bytes for one Integer
+        //?????????
+        byteBuffer.putInt(this.bitsWritten);
+        byte[] byteArray = byteBuffer.array();
+        
+        stream.write(byteArray);
+    }
+    
+    // 2 write huffmanTree.getCharArray() to file
+    public void writeCharArray(char[] charArray) throws IOException {
+        ByteBuffer byteBuffer = ByteBuffer.allocate(2 * charArray.length); //2 bytes for 1 char
+        for (char c : charArray) {
+            byteBuffer.putChar(c);
+        }
+        byte[] byteArray = byteBuffer.array();
+        
+        stream.write(byteArray);
+    }
+    //3 write freqArray to file
+    public void writeFreqArray(int[] freqArray) throws IOException {
+        ByteBuffer byteBuffer = ByteBuffer.allocate(4 * freqArray.length);
+        for (int k : freqArray) {
+            byteBuffer.putInt(k);
+        }
+        byte[] byteArray = byteBuffer.array();
+        
+        stream.write(byteArray);
     }
     
 }

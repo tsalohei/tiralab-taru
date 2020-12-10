@@ -12,29 +12,51 @@ import java.io.FileWriter;
  */
 public class Output {
     
-    Map<Character, String> map;
-    Input input;
+    InputText input;
     File myFileObj;
     String inputFilename;
     
-    public Output(Map<Character, String> map, Input input, String inputFilename) {
-        this.map = map;
+    private HuffmanTree huffmanTree;
+    
+    public Output(HuffmanTree tree, InputText input, String inputFilename) {
+        this.huffmanTree = tree;
+        this.huffmanTree.create();
         this.input = input;
         
         if (inputFilename.contains(".")) {
             this.inputFilename = inputFilename.substring(0, inputFilename.lastIndexOf("."));    
         } else {
             this.inputFilename = inputFilename;
-        }        
+        }
     }
-     
+    
     public void process() throws FileNotFoundException, IOException {
         createNewFile();
         String s = createPrefixString();
         
         BitWriter bitWriter = new BitWriter(myFileObj);
+        // TODO add getters in huffmantree for char and freq arrays - DONE
+        
+        // write huffmanTree.getCharArray().length as int to this.myFileObj
+        bitWriter.writeNumberOfCharacters(huffmanTree.getCharArray().length);
+        System.out.println("Output: char/freq-Array length: " + huffmanTree.getCharArray().length);
+               
+        // write huffmanTree.getCharArray() to file
+        bitWriter.writeCharArray(huffmanTree.getCharArray());
+        
+        // write huffmanTree.getFreqArray() to file
+        bitWriter.writeFreqArray(huffmanTree.getFreqArray());
+        
         bitWriter.writeBitsInString(s);
+        
+        //how many "real" bits, excluding possible zeros from end
+        bitWriter.writeHowManyBits();
+        
+        
+                
         bitWriter.stop();
+        
+        System.out.println("Output-class: File length: " + myFileObj.length());
         
         //savePrefixesToFile(s);
         
@@ -63,7 +85,7 @@ public class Output {
      */
     public String findPrefixForCharacter(char c) {
         String prefix = "";
-        for (Map.Entry<Character, String> entry : map.entrySet()) {
+        for (Map.Entry<Character, String> entry : this.huffmanTree.getPrefixes().entrySet()) {
             
             if (entry.getKey() == c) {
                 prefix = entry.getValue();
@@ -103,4 +125,6 @@ public class Output {
             e.printStackTrace();
         }
     }
+    
+    
 }
