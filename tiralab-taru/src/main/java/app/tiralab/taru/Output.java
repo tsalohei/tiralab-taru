@@ -48,13 +48,12 @@ public class Output {
         bitWriter.writeFreqArray(huffmanTree.getFreqArray());
         
         bitWriter.writeBitsInString(s);
+        bitWriter.stop();
         
         //how many "real" bits, excluding possible zeros from end
         bitWriter.writeHowManyBits();
+        bitWriter.closeStream();
         
-        
-                
-        bitWriter.stop();
         
         System.out.println("Output-class: File length: " + myFileObj.length());
         

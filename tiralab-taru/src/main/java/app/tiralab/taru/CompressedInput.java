@@ -51,7 +51,8 @@ public class CompressedInput implements Input {
         System.out.println("File length (all bytes): " + fileContent.length);
         System.out.println("PREF START (file length - prefixStart) " + (fileContent.length - prefixStart));
         
-        this.prefixStringBytes = new byte[bb.remaining() - 4 - 1];
+        System.out.println("WILL READ " + (bb.remaining() - 4));
+        this.prefixStringBytes = new byte[bb.remaining() - 4];
         bb.get(this.prefixStringBytes);
         
         this.bitAmount = bb.getInt();

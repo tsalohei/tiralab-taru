@@ -2,6 +2,7 @@
 import app.tiralab.taru.BitWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.math.BigInteger;
 import java.nio.ByteBuffer;
 import org.junit.Test;
@@ -11,13 +12,16 @@ public class BitWriterTest {
     BitWriter bitWriter;
     File myFile;
     
-    public BitWriterTest() throws FileNotFoundException {
+    
+    @Test    
+    public void foo() throws IOException {
         this.myFile = new File("dummy");
         this.bitWriter = new BitWriter(myFile);
+        
+        this.bitWriter.writeBitsInString("101010101");
+        this.bitWriter.stop();
     }
-    
-    
-    
+   
     
     /*
     @Test

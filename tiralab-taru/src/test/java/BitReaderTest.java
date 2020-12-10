@@ -11,7 +11,7 @@ public class BitReaderTest {
     @Test
     public void getBitAtPosTest() throws IOException {
         byte[] dummy = new byte[] {};
-        BitReader bitreader = new BitReader(dummy);
+        BitReader bitreader = new BitReader(dummy, 0);
         byte b = 3; // 00000011
         assertEquals("1", bitreader.getBitAtPos(b, 0));
         assertEquals("1", bitreader.getBitAtPos(b, 1));

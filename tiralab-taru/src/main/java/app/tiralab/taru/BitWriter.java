@@ -38,6 +38,8 @@ public class BitWriter {
      * @throws IOException if 
      */
     public void writeBitsInString(String s) throws IOException {
+        System.out.println("WRITING STRING " + s);
+        System.out.println("WRITING STRING " + s.length());
         for (int i = 0; i < s.length(); i++) {
             char bit = s.charAt(i);
             
@@ -47,10 +49,7 @@ public class BitWriter {
             } else {
                 writeBit(0); 
             }
-        }
-        
-        System.out.println("BYTES WRITTEN (string)" + bytesWritten);
-        System.out.println("BITS WRITTEN (string)" + bitsWritten);
+        }               
     }
     /**
      * Writes a bit (represented by an Integer 0 or 1) to file.
@@ -66,7 +65,7 @@ public class BitWriter {
             this.bitCalculator++;
             this.bitsWritten++;
             
-            if (bitCalculator == 8) {
+            if (bitCalculator == 8) {                
                 bytesWritten++;
                 
                 this.stream.write(oneByte); 
@@ -82,7 +81,13 @@ public class BitWriter {
         while (bitCalculator > 0 && bitCalculator <= 8) {
             writeBit(0);
         }
-   
+           
+        
+        System.out.println("BYTES WRITTEN (string)" + bytesWritten);
+        System.out.println("BITS WRITTEN (string)" + bitsWritten);
+    }
+    
+    public void closeStream() throws IOException {
         stream.close();
     }
     

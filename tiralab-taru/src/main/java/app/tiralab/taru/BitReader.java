@@ -41,16 +41,14 @@ public class BitReader {
         for (byte b : fileContent) {            
             for (int i = 7; i >= 0; i--) {
                 builder.append(getBitAtPos(b, i));
-                
-                
+                                
                 if (bitCounter >= bitAmount) {
                     break;
-                }
-                
+                }                
                 bitCounter++;
             }
         }
-                System.out.println("BIT READER (in BitReader) " + bitCounter);
+        System.out.println("BIT READER (in BitReader) " + bitCounter);
 
         
         return builder.toString();
