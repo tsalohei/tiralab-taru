@@ -13,10 +13,10 @@ import java.util.List;
 //what is preserved in the map: character-string-pairs
 public class MyMap {
     
-    //private LinkedList<MapItem>[] list;
     private final int defaultSize;
     private MapItem[] array;
     //total amount of MapItems/size of MyMap
+    
     
     public MyMap() {
        this.defaultSize = 100;
@@ -53,17 +53,20 @@ public class MyMap {
         } else {
             MapItem current = this.array[index];
                
-            //KATSO TÄTÄ KOHTAA VIELÄ TARKEMMIN ETTEI TULE TUPLANA SAMOJA OPERAATIOITA
-            while (current  != null) {
+            
+            while (true) {
                 if (current.getKey().equals(item.getKey())) { //sama key eli esim. "1011"
                     current.setValue(item.getValue());   
-                    break;
+                    return;
                 }
                 
-                current = current.getNext();
-               
+                if (current.getNext() != null) { //seuraava on olemassa
+                    current = current.getNext();
+                } else { //ei seuraavaa eli ollaan vikassa itemissa
+                    break; //ja siirrytään ulos loopista
+                }                
             }
-            current.setNext(item);
+            current.setNext(item); //ja asetetaan seuraava
         }
     }
     

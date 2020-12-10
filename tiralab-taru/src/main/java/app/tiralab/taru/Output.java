@@ -83,14 +83,7 @@ public class Output {
      * @return prefix 
      */
     public String findPrefixForCharacter(char c) {
-        String prefix = "";
-        for (Map.Entry<Character, String> entry : this.huffmanTree.getPrefixes().entrySet()) {
-            
-            if (entry.getKey() == c) {
-                prefix = entry.getValue();
-            } 
-        } 
-        return prefix;
+        return this.huffmanTree.getPrefixes().get(c);
     }
     
     /**

@@ -7,15 +7,18 @@ public class MapItem {
     private Character value;
     private MapItem nextItem;
     
-    public MapItem() {  
+    public MapItem(String key, Character value) {
+        this.key = key;
+        this.value = value;
         this.nextItem = null;
     }
     
-    public void put(String key, Character value) {
+    /*
+    public void put(String key, Character value) { //overwrite?
         this.key = key;
-        this.value = value;
-        
+        this.value = value;  
     }
+    */
     
     public String getKey() {
         return this.key;
