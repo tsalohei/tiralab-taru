@@ -3,11 +3,11 @@ package app.tiralab.taru;
 
 public class MapItem {
     
-    private String key;
-    private Character value;
+    private Character key;
+    private String value;
     private MapItem nextItem;
     
-    public MapItem(String key, Character value) {
+    public MapItem(Character key, String value) {
         this.key = key;
         this.value = value;
         this.nextItem = null;
@@ -20,11 +20,11 @@ public class MapItem {
     }
     */
     
-    public String getKey() {
+    public Character getKey() {
         return this.key;
     }
     
-    public Character getValue() {
+    public String getValue() {
         return this.value;
     }
     
@@ -36,12 +36,12 @@ public class MapItem {
         }
     }
     
-    public void setValue(Character c) {
-        this.value = c;
+    public void setKey(Character c) {
+        this.key = c;
     }
     
-    public void setKey(String s) {
-        this.key = s;
+    public void setValue(String s) {
+        this.value = s;
     }
     
     public void setNext(MapItem item) {

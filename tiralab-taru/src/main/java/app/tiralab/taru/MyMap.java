@@ -24,7 +24,7 @@ public class MyMap {
     }
     
     
-    public Character get(String key) {
+    public String get(Character key) {
         int index = index(key);
         
         //mennään arrayssä oikeaan indexiin
@@ -75,7 +75,7 @@ public class MyMap {
      * @param key Key of MapItem
      * @return int index
      */
-    private int index(String key) {
+    private int index(Character key) {
         int index = key.hashCode() % this.defaultSize;
         return index;
         //pitääkö varautua siihen että key on null?
