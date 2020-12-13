@@ -1,7 +1,7 @@
 package app.tiralab.taru;
 
-import java.util.HashMap;
-import java.util.Map;
+//import java.util.HashMap;
+//import java.util.Map;
 
 /**
  * This class builds a Huffman Tree based on input.
@@ -13,14 +13,14 @@ public class HuffmanTree {
     private char[] charArray;
     private int[] charFreq;
     private HuffmanNode root;
-    private Map<Character, String> map;
-    //private MyMap myMap;
+    //private Map<Character, String> map;
+    private MyMap myMap;
     
     public HuffmanTree(Input text) {
         this.input = text;
         this.root = null;
-        this.map = new HashMap<Character, String>();
-        //this.myMap = new MyMap();
+        //this.map = new HashMap<Character, String>();
+        this.myMap = new MyMap();
     }
     
     /**
@@ -114,7 +114,10 @@ public class HuffmanTree {
             && ((int) root.getChar() > 31)) { //31-->visible ascii values
             
                 
-            map.put(root.getChar(), s);
+            //map.put(root.getChar(), s);
+            MapItem item = new MapItem(root.getChar(), s);
+            myMap.put(item);
+            
             return; 
         } 
         buildPrefixes(root.getLeft(), s + "0"); 
@@ -126,8 +129,9 @@ public class HuffmanTree {
      * Getter for the prefixes.
      * @return Map with Character-String -pairs where the String is the prefix
      */
-    public Map<Character, String> getPrefixes() {
-        return this.map;
+    public MyMap getPrefixes() {
+        //return this.map;
+        return this.myMap;
     }
 
     /**

@@ -2,8 +2,8 @@
 import app.tiralab.taru.Decompress;
 import app.tiralab.taru.HuffmanTree;
 import app.tiralab.taru.InputText;
+import app.tiralab.taru.MyMap;
 import app.tiralab.taru.Output;
-import java.util.Map;
 import static org.junit.Assert.*;
 import org.junit.Test;
 
@@ -17,7 +17,7 @@ public class DecompressTest {
         InputText input = new InputText("abbacabba55");
         HuffmanTree tree = new HuffmanTree(input);
         tree.create();
-        Map<Character, String> map = tree.getPrefixes();       
+        tree.getPrefixes();       
         Output output = new Output(tree, input, "dummy");
         String s = output.createPrefixString();
         

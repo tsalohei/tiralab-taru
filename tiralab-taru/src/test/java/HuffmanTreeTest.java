@@ -3,8 +3,9 @@ import app.tiralab.taru.HuffmanNode;
 import app.tiralab.taru.HuffmanTree;
 import app.tiralab.taru.Input;
 import app.tiralab.taru.InputText;
+import app.tiralab.taru.MyMap;
 import app.tiralab.taru.MyMinHeap;
-import java.util.Map;
+//import java.util.Map;
 //import java.util.PriorityQueue;
 import static org.junit.Assert.*;
 import org.junit.Before;
@@ -77,59 +78,21 @@ public class HuffmanTreeTest {
      
         tree.buildPrefixes(rootNode, "");
         
-        Map<Character, String> map = tree.getPrefixes();
-        String value = null;
-        for (Map.Entry<Character, String> entry : map.entrySet()) {
-            
-            if (entry.getKey() == 'A') {
-                value = entry.getValue();
-                assertEquals("11", value);
-            } else if (entry.getKey() == 'B') {
-                value = entry.getValue();
-                assertEquals("100", value);
-            } else if (entry.getKey() == 'C') {
-                value = entry.getValue();
-                assertEquals("0", value);
-            } else if (entry.getKey() == 'D') {
-                value = entry.getValue();
-                assertEquals("101", value);
-            }
-        }      
+        MyMap myMap = tree.getPrefixes();
         
+        assertEquals("11", myMap.get('A'));
+        assertEquals("100", myMap.get('B'));
+        assertEquals("0", myMap.get('C'));
+        assertEquals("101", myMap.get('D'));
     }
-    /*
-    public void buildPrefixesTest1() {
-        PriorityQueue<HuffmanNode> q = tree.buildMinHeap(this.charArray, this.intArray);
-        HuffmanNode rootNode = tree.createInternalNodes(q);
-     
-        tree.buildPrefixes(rootNode, "");
-        
-        Map<Character, String> map = tree.getPrefixes();
-        String value = null;
-        for (Map.Entry<Character, String> entry : map.entrySet()) {
-            
-            if (entry.getKey() == 'A') {
-                value = entry.getValue();
-                assertEquals("11", value);
-            } else if (entry.getKey() == 'B') {
-                value = entry.getValue();
-                assertEquals("100", value);
-            } else if (entry.getKey() == 'C') {
-                value = entry.getValue();
-                assertEquals("0", value);
-            } else if (entry.getKey() == 'D') {
-                value = entry.getValue();
-                assertEquals("101", value);
-            }
-        }      
-        
-    }
-    */
+    
+    
+    
     @Test
     public void buildPrefixesTest2() {
        
         InputText input2 = new InputText("A_DEAD_DAD_CEDED_A_BAD_BABE_A_BEADED_ABACA_BED");
-        //input2.calculate();
+        
         HuffmanTree tree2 = new HuffmanTree(input2);
         char[] charArray2 = new char[]{'C', 'B', 'E', '_', 'D', 'A'};
         int []intArray2 = new int[]{2, 6, 7, 10, 10, 11};
@@ -139,62 +102,13 @@ public class HuffmanTreeTest {
         
         tree2.buildPrefixes(rootNode, "");
         
-        Map<Character, String> map = tree2.getPrefixes();
+        MyMap myMap = tree2.getPrefixes();
         String value = null;
-        for (Map.Entry<Character, String> entry : map.entrySet()) {
-            
-            if (entry.getKey() == 'A') {
-                value = entry.getValue();
-                assertEquals("10", value);
-            } else if (entry.getKey() == 'B') {
-                value = entry.getValue();
-                assertEquals("1111", value);
-            } else if (entry.getKey() == 'C') {
-                value = entry.getValue();
-                assertEquals("1110", value);
-            } else if (entry.getKey() == 'E') {
-                value = entry.getValue();
-                assertEquals("110", value);
-            }  
-        }       
-    }
-    /*
-    public void buildPrefixesTest2() {
-       
-        Input input2 = new Input("A_DEAD_DAD_CEDED_A_BAD_BABE_A_BEADED_ABACA_BED");
-        input2.calculate();
-        HuffmanTree tree2 = new HuffmanTree(input2);
-        char[] charArray2 = new char[]{'C', 'B', 'E', '_', 'D', 'A'};
-        int []intArray2 = new int[]{2, 6, 7, 10, 10, 11};
         
-        PriorityQueue<HuffmanNode> q = tree2.buildMinHeap(charArray2, intArray2);
-        HuffmanNode rootNode = tree2.createInternalNodes(q);
-        
-        tree2.buildPrefixes(rootNode, "");
-        
-        Map<Character, String> map = tree2.getPrefixes();
-        String value = null;
-        for (Map.Entry<Character, String> entry : map.entrySet()) {
-            
-            if (entry.getKey() == 'A') {
-                value = entry.getValue();
-                assertEquals("10", value);
-            } else if (entry.getKey() == 'B') {
-                value = entry.getValue();
-                assertEquals("1111", value);
-            } else if (entry.getKey() == 'C') {
-                value = entry.getValue();
-                assertEquals("1110", value);
-            } else if (entry.getKey() == 'E') {
-                value = entry.getValue();
-                assertEquals("110", value);
-            }  
-        }       
-    }
-    */
-
+        assertEquals("10", myMap.get('A'));
+        assertEquals("1111", myMap.get('B'));
+        assertEquals("1110", myMap.get('C'));
+        assertEquals("110", myMap.get('E'));
+    } 
+    
 }
-
-
-
-
