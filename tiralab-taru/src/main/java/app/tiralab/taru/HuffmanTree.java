@@ -14,11 +14,13 @@ public class HuffmanTree {
     private int[] charFreq;
     private HuffmanNode root;
     private Map<Character, String> map;
+    //private MyMap myMap;
     
     public HuffmanTree(Input text) {
         this.input = text;
         this.root = null;
         this.map = new HashMap<Character, String>();
+        //this.myMap = new MyMap();
     }
     
     /**

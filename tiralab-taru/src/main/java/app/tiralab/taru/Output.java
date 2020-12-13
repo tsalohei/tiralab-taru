@@ -1,7 +1,5 @@
 package app.tiralab.taru;
 
-import java.util.Map;
-
 import java.io.File;    
 import java.io.FileNotFoundException;
 import java.io.IOException; 
