@@ -65,7 +65,7 @@ public class Decompress {
         try {
             this.myFileObj = new File(this.fileName + ".dc"); // tähän filen oikea nimi mukaan
             
-            if (myFileObj.createNewFile() == true) {
+            if (myFileObj.createNewFile() == false) {
                 System.out.println("File " + this.fileName + ".dc already "
                         + "exists. Delete the file to make a new one.");
             }

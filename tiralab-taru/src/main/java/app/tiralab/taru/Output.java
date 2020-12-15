@@ -78,7 +78,7 @@ public class Output {
         try {
             this.myFileObj = new File(inputFilename + ".huff");
             
-            if (myFileObj.createNewFile() == true) {
+            if (myFileObj.createNewFile() == false) {
                 System.out.println("File " + inputFilename + ".huff already "
                         + "exists. Delete the file to make a new one.");
             }
