@@ -7,32 +7,18 @@ import static org.junit.Assert.*;
 
 
 public class InputTextTest {
-     
     @Test 
     public void charFrequency() {
-        InputText input = new InputText("aabbabca");
-        //input.calculate();
+        InputText input = new InputText("aabbabca");    
         assertArrayEquals(new int[]{1, 3, 4}, input.getCharFreq()); 
     }
    
     @Test 
     public void getCharArrayTest() {
-        InputText input = new InputText("aabbabca");
-        //input.calculate();
+        InputText input = new InputText("aabbabca");     
         assertArrayEquals(new char[]{'c', 'b', 'a'}, input.getCharArray());       
     }
-    
-    @Test 
-    public void createCharacterObjectListTest() {
-        InputText input = new InputText("aaab");
-        int[] intArray = new int[256];
-        intArray[97] = 3;
-        intArray[98] = 1;
-        List<CharacterObject> list = input.createCharacterObjectList(intArray);
-        assertEquals(3, list.get(1).getFrequency()); 
-        assertEquals('a', list.get(1).getCharacter());
-    }    
-    
+        
     @Test 
     public void makeArrayFromStringTest() {
         InputText input = new InputText("aabbabca"); 
@@ -58,5 +44,19 @@ public class InputTextTest {
         assertEquals(15, array[4].getFrequency());
     }
     
+    
+    @Test 
+    public void createCharacterObjectListTest() {
+        InputText input = new InputText("aaab");
+        int[] intArray = new int[256];
+        intArray[97] = 3;
+        intArray[98] = 1;
+        CharacterObject[] list = input.createCharacterObjectList(intArray);
+        
+        assertEquals(1, list[0].getFrequency()); 
+        assertEquals('b', list[0].getCharacter());
+        assertEquals(3, list[1].getFrequency()); 
+        assertEquals('a', list[1].getCharacter());
+    }    
    
 }

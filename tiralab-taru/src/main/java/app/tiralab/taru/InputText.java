@@ -1,37 +1,31 @@
 package app.tiralab.taru;
 
-import java.util.ArrayList;
-import java.util.Collections;
-
 /**
- * Class input handles the String input. This class processes information about
+ * Class Input handles the String input. This class processes information about
  * the String so that the information is available in the correct format to the 
- * HuffmanTree. 
+ * HuffmanTree class. 
  */
 public class InputText implements Input {
        
     private final String s;
     private char[] chars;
     private int[] frequencies;
-    int n; //poista?
     
     public InputText(String input) { 
         this.s = input;
-        calculate();
-        
+        calculate(); 
     }
     
     /**
-     * This method makes two arrays based on input. A char array contains the 
-     * unique characters in the input, and an integer array their respective 
-     * frequencies.
+     * This method makes two arrays based on input text. A char array contains 
+     * the unique characters in the input text, and an integer array their 
+     * respective frequencies.
      */
     void calculate() {
         int[] intarray = makeArrayFromString(); 
-        ArrayList<CharacterObject> arraylist = createCharacterObjectList(intarray);
-        setCharFreq(arraylist);
-        setCharArray(arraylist);
-        this.n = arraylist.size();    
+        CharacterObject[] coArray = createCharacterObjectList(intarray);
+        setCharFreq(coArray);
+        setCharArray(coArray);
     }
     
     /**
@@ -39,21 +33,14 @@ public class InputText implements Input {
      * array has information about what the unique characters in the String are,
      * and what is their frequency in the String. 
      * @param s input String
-     * @return array with the abovementioned information
+     * @return int[] array with the abovementioned information
      */ 
-    public int[] makeArrayFromString() {
-        
-        /*
-        for (byte b : s.getBytes()) {
-            array[((int) b) + 128]++;
-        }*/
-         //TODO: support also others than ASCII 
-         
+    public int[] makeArrayFromString() {      
         int[] array = new int[256]; 
         for (int i = 0; i < s.length(); i++) {
             char current = s.charAt(i);      
             int index = (int) current;
-            //extra due to non-ascii stuff
+            
             if (index >= 0 && index <= 255) {
                 array[index]++;     
             }            
@@ -78,25 +65,17 @@ public class InputText implements Input {
     } 
     
     /**
-     * This method returns the number of unique characters in the input.
-     * @return integer
-     *
-    public int getNroOfUniqueCharacters() {
-        return this.n;
-    }/
-    
-    /**
      * Creates a char array. One unique character occupies one index in array. 
      * If there are for example 4 unique characters, the length of the array 
      * will be 4. Characters are in increasing order of frequency.
-     * @param list Index means which character is in question, and value 
+     * @param coArray Index means which character is in question, and value 
      * tells the frequency of the alphabet. 
      */
-    public void setCharArray(ArrayList<CharacterObject> list) {
-        int n = list.size();
+    public void setCharArray(CharacterObject[] coArray) {
+        int n = coArray.length;
         this.chars = new char[n]; 
         for (int i = 0; i < n; i++) {
-            chars[i] = list.get(i).getCharacter();
+            chars[i] = coArray[i].getCharacter();
         }       
     }
     
@@ -104,13 +83,13 @@ public class InputText implements Input {
      * Creates an integer array. Length of the array equals the amount of unique
      * characters. Value equals the frequency of one unique character in input. 
      * The values are in increasing order of frequency.
-     * @param list 
+     * @param coArray 
      */
-    public void setCharFreq(ArrayList<CharacterObject> list) {
-        int n = list.size();
+    public void setCharFreq(CharacterObject[] coArray) {
+        int n = coArray.length;
         this.frequencies = new int[n]; 
         for (int i = 0; i < n; i++) {
-            frequencies[i] = list.get(i).getFrequency();
+            frequencies[i] = coArray[i].getFrequency();
         }          
     }
     
@@ -118,28 +97,42 @@ public class InputText implements Input {
      * This method makes a list of CharacterObject instances where the objects
      * are in increasing order based on frequency. 
      * @param intArray
-     * @return list of CharacterObject instances
+     * @return array of CharacterObject instances
      */
-    public ArrayList<CharacterObject> createCharacterObjectList(int[] intArray) {
-        ArrayList<CharacterObject> list = new ArrayList<>();
+    public CharacterObject[] createCharacterObjectList(int[] intArray) {
+        int calculator = 0;
+        for (int j = 32; j < intArray.length; j++) {
+            if (intArray[j] > 0) { 
+                calculator++;
+            }
+        }
+        
+        CharacterObject[] coArray = new CharacterObject[calculator];
+        int k = 0;
+        
         for (int i = 0; i < intArray.length; i++) { 
          
-            if (i > 31 && intArray[i] > 0) { //visible ascii characters start from index 32
+            if (i > 31 && intArray[i] > 0) { //visible ascii characters 
                 char c = (char) (i);
                 int j = intArray[i];
                 CharacterObject co = new CharacterObject(c, j);
-                list.add(co);
+                coArray[k] = co; 
+                k++;
             }
         }
-        Collections.sort(list);
-        return list;
+
+        mergeSort(coArray);
+        return coArray;
     }
     
+    /**
+     * Getter for input text.
+     * @return String
+     */
     public String getString() {
         return this.s;
     }
     
-    //MITEN ARRAY PALAUTETAAN VAI PITÄISIKÖ SEN OLLA LUOKKA-ATTRIBUUTTI?
     /**
      * Algorithm that sorts an array of CharacterObject instances into 
      * increasing order of frequency.
