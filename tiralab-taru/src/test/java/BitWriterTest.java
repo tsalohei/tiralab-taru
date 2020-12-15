@@ -5,6 +5,9 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.math.BigInteger;
 import java.nio.ByteBuffer;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import org.junit.After;
 import org.junit.Test;
 
 public class BitWriterTest {
@@ -13,9 +16,14 @@ public class BitWriterTest {
     File myFile;
     
     
+    @After
+    public void cleanup() throws IOException {
+        Files.deleteIfExists(Paths.get("dummy1"));
+    }
+    
     @Test    
     public void foo() throws IOException {
-        this.myFile = new File("dummy");
+        this.myFile = new File("dummy1");
         this.bitWriter = new BitWriter(myFile);
         
         this.bitWriter.writeBitsInString("101010101");

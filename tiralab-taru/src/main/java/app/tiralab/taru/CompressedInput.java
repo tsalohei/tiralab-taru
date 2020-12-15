@@ -8,7 +8,7 @@ import java.nio.file.Files;
 /**
  * Class CompressedInput gets as parameter the name of a compressed file 
  * (for example "book.huff") and re-creates variables that are needed to 
- * decompress the file again to readable format ("book.txt"). 
+ * decompress the file again to readable format. 
  */
 
 public class CompressedInput implements Input {

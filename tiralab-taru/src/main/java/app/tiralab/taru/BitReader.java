@@ -48,8 +48,6 @@ public class BitReader {
                 bitCounter++;
             }
         }
-        System.out.println("BIT READER (in BitReader) " + bitCounter);
-
         
         return builder.toString();
     }
