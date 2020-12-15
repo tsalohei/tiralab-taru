@@ -1,5 +1,10 @@
 package app.tiralab.taru;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+
 /**
  * This is the first version for decompression. First we just read the coded 
  * String input (for example "1011001.."), and re-create the input String from 
@@ -9,10 +14,13 @@ public class Decompress {
     
     private final String s;
     private final HuffmanTree tree;
+    File myFileObj;
+    String fileName; //UUSI
     
-    public Decompress(String s, HuffmanTree tree) {
+    public Decompress(String s, HuffmanTree tree, String inputFilename) { //filename UUSI!!
         this.s = s;
         this.tree = tree;
+        this.fileName = inputFilename.substring(0, inputFilename.lastIndexOf("."));
     }
     
     /**
@@ -20,7 +28,7 @@ public class Decompress {
      * ("some random text...").
      * @return String 
      */
-    public String process() {
+    public String process() throws IOException {
         HuffmanNode root = tree.getRoot();
         StringBuilder builder = new StringBuilder();
         
@@ -40,6 +48,31 @@ public class Decompress {
             }
         }
         
+        createNewFile();
+        writeToFile(builder.toString());
+        
         return builder.toString();
+    }
+    
+    public void writeToFile(String s) throws IOException {
+        BufferedWriter writer = new BufferedWriter(new FileWriter(this.fileName + ".dc"));
+        writer.write(s);
+    
+        writer.close();
+    }
+    
+    public void createNewFile() {
+        try {
+            this.myFileObj = new File(this.fileName + ".dc"); // tähän filen oikea nimi mukaan
+            
+            if (myFileObj.createNewFile() == true) {
+                System.out.println("File " + this.fileName + ".dc already "
+                        + "exists. Delete the file to make a new one.");
+            }
+            
+        } catch (IOException e) {
+            System.out.println("Error!");
+            e.printStackTrace();
+        }
     }
 }
