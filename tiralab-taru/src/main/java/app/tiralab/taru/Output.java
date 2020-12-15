@@ -3,7 +3,6 @@ package app.tiralab.taru;
 import java.io.File;    
 import java.io.FileNotFoundException;
 import java.io.IOException; 
-import java.io.FileWriter; 
 
 /**
  * This class is responsible for printing and saving the output.
@@ -33,46 +32,20 @@ public class Output {
         String s = createPrefixString();
         
         BitWriter bitWriter = new BitWriter(myFileObj);
-        // TODO add getters in huffmantree for char and freq arrays - DONE
         
-        // write huffmanTree.getCharArray().length as int to this.myFileObj
         bitWriter.writeNumberOfCharacters(huffmanTree.getCharArray().length);
-        System.out.println("Output: char/freq-Array length: " + huffmanTree.getCharArray().length);
-               
-        // write huffmanTree.getCharArray() to file
+              
         bitWriter.writeCharArray(huffmanTree.getCharArray());
         
-        // write huffmanTree.getFreqArray() to file
         bitWriter.writeFreqArray(huffmanTree.getFreqArray());
         
         bitWriter.writeBitsInString(s);
         bitWriter.stop();
         
-        //how many "real" bits, excluding possible zeros from end
         bitWriter.writeHowManyBits();
         bitWriter.closeStream();
         
-        
-        System.out.println("Output-class: File length: " + myFileObj.length());
-        
-        //savePrefixesToFile(s);
-        
     }
-    
-    /**
-     * Saves the coded input (prefixes) to a file in readable format.
-     * @param s String that contains the coded input
-     *
-    public void savePrefixesToFile(String s) {
-        try {
-            FileWriter myWriter = new FileWriter("bookCoded.huff");
-            myWriter.write(s);
-            myWriter.close();
-        } catch (IOException e) {
-            System.out.println("Error!");
-            e.printStackTrace();
-        }
-    }*/
     
     
     /**
@@ -99,15 +72,16 @@ public class Output {
     }
     
     /**
-     * Creates a new file called bookCoded.txt.
+     * Creates a new file where the bytes are written. File name ends in 
+     * ".huff".
      */
     public void createNewFile() {
         try {
             this.myFileObj = new File(inputFilename + ".huff");
             
             if (myFileObj.createNewFile() == false) {
-                System.out.println("File " + inputFilename + ".huff already exists. Delete "
-                        + "the file to make a new one.");
+                System.out.println("File " + inputFilename + ".huff already "
+                        + "exists. Delete the file to make a new one.");
             }
             
         } catch (IOException e) {

@@ -45,20 +45,10 @@ public class CompressedInput implements Input {
             System.out.println("Freq: " + frequencies[i]);
         }
         
-        int prefixStart = 4 + charAmount * 6;
-        
-        System.out.println("PREF START (4 byte +charAmount in byte) " + prefixStart);
-        System.out.println("File length (all bytes): " + fileContent.length);
-        System.out.println("PREF START (file length - prefixStart) " + (fileContent.length - prefixStart));
-        
-        System.out.println("WILL READ " + (bb.remaining() - 4));
         this.prefixStringBytes = new byte[bb.remaining() - 4];
         bb.get(this.prefixStringBytes);
         
         this.bitAmount = bb.getInt();
-        System.out.println("BIT AMOUNT READ: " + bitAmount);
-        
-        System.out.println("BYTES READ " + prefixStringBytes.length);
     }
       
     /**

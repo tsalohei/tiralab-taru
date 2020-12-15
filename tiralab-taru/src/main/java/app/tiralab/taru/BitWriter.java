@@ -39,7 +39,6 @@ public class BitWriter {
      */
     public void writeBitsInString(String s) throws IOException {
         System.out.println("WRITING STRING " + s);
-        System.out.println("WRITING STRING " + s.length());
         for (int i = 0; i < s.length(); i++) {
             char bit = s.charAt(i);
             
@@ -75,26 +74,30 @@ public class BitWriter {
         }
     }
     
-    //FIKSI TÄHÄN
-    //if bits don't match 8
+    /**
+     * Fills in (the last) byte with zeros if it has less than 8 bits.
+     * @throws IOException if writing to file fails 
+     */
     public void stop() throws IOException {
         while (bitCalculator > 0 && bitCalculator <= 8) {
             writeBit(0);
         }
-           
-        
-        System.out.println("BYTES WRITTEN (string)" + bytesWritten);
-        System.out.println("BITS WRITTEN (string)" + bitsWritten);
+    
     }
     
+    /**
+     * Closes the writing operation. 
+     * @throws IOException 
+     */
     public void closeStream() throws IOException {
         stream.close();
     }
-    
-    
-    //NEW STUFF 8.12.2020
-    
-    //1. write the int (length of charArray)
+ 
+    /**
+     * Writes to file the number of unique characters. 
+     * @param n number of unique characters
+     * @throws IOException if writing to file fails.
+     */
     public void writeNumberOfCharacters(int n) throws IOException {
         ByteBuffer byteBuffer = ByteBuffer.allocate(4); //4 bytes for one Integer
         byteBuffer.putInt(n);
@@ -102,18 +105,12 @@ public class BitWriter {
         
         stream.write(byteArray);
     }
-    //4
-    public void writeHowManyBits() throws IOException {
-        System.out.println("WRITTEN BIT COUNTER (in BitWriter) " + this.bitsWritten);
-        ByteBuffer byteBuffer = ByteBuffer.allocate(4); //4 bytes for one Integer
-        //?????????
-        byteBuffer.putInt(this.bitsWritten);
-        byte[] byteArray = byteBuffer.array();
-        
-        stream.write(byteArray);
-    }
     
-    // 2 write huffmanTree.getCharArray() to file
+    /**
+     * Writes to file the char array used by HuffmanTree class.
+     * @param charArray of unique characters
+     * @throws IOException if writing to file fails.
+     */
     public void writeCharArray(char[] charArray) throws IOException {
         ByteBuffer byteBuffer = ByteBuffer.allocate(2 * charArray.length); //2 bytes for 1 char
         for (char c : charArray) {
@@ -123,7 +120,12 @@ public class BitWriter {
         
         stream.write(byteArray);
     }
-    //3 write freqArray to file
+    
+    /**
+     * Writes to file the int array used by HuffmanTree.
+     * @param freqArray frequencies of unique characters
+     * @throws IOException 
+     */
     public void writeFreqArray(int[] freqArray) throws IOException {
         ByteBuffer byteBuffer = ByteBuffer.allocate(4 * freqArray.length);
         for (int k : freqArray) {
@@ -134,4 +136,18 @@ public class BitWriter {
         stream.write(byteArray);
     }
     
+    /**
+     * Writes how many "real" bits there are in the prefix code, excluding 
+     * possible zeros from end.
+     * @throws IOException if writing to file fails. 
+     */
+    public void writeHowManyBits() throws IOException {
+        System.out.println("WRITTEN BIT COUNTER (in BitWriter) " + this.bitsWritten);
+        ByteBuffer byteBuffer = ByteBuffer.allocate(4); //4 bytes for one Integer
+        
+        byteBuffer.putInt(this.bitsWritten);
+        byte[] byteArray = byteBuffer.array();
+        
+        stream.write(byteArray);
+    }
 }
