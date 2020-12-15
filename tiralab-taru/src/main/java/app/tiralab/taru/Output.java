@@ -47,7 +47,6 @@ public class Output {
         
     }
     
-    
     /**
      * Finds the unique prefix for each unique character.
      * @param c character
@@ -79,7 +78,7 @@ public class Output {
         try {
             this.myFileObj = new File(inputFilename + ".huff");
             
-            if (myFileObj.createNewFile() == false) {
+            if (myFileObj.createNewFile() == true) {
                 System.out.println("File " + inputFilename + ".huff already "
                         + "exists. Delete the file to make a new one.");
             }
