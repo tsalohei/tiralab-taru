@@ -1,4 +1,4 @@
-# Comparison of two lossless data compression algorithms
+# Huffman lossless data compression algorithm
 
 ## Documentation
 
