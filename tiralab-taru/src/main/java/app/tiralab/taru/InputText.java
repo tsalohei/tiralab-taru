@@ -138,4 +138,70 @@ public class InputText implements Input {
     public String getString() {
         return this.s;
     }
+    
+    //MITEN ARRAY PALAUTETAAN VAI PITÄISIKÖ SEN OLLA LUOKKA-ATTRIBUUTTI?
+    /**
+     * Algorithm that sorts an array of CharacterObject instances into 
+     * increasing order of frequency.
+     * @param a an array of CharacterObjects.
+     */
+    public void mergeSort(CharacterObject[] a) {
+        CharacterObject[] tmpArray = new CharacterObject[a.length];
+        mergeSortRoutine(a, tmpArray, 0, a.length-1);
+    }
+    
+    /**
+     * Internal helper for method mergeSort. Makes recursive calls.
+     * @param a an array of CharacterObjects.
+     * @param tmpArray an array where the merged result is placed.
+     * @param left the leftmost index of the subarray.
+     * @param right the rightmost index of the subarray.
+     */
+    private void mergeSortRoutine(CharacterObject[] a, CharacterObject[] 
+            tmpArray, int left, int right) {
+        
+        if (left < right) {
+            int center = (left + right) / 2;
+            mergeSortRoutine(a, tmpArray, left, center);
+            mergeSortRoutine(a, tmpArray, center + 1, right);
+            merge(a, tmpArray, left, center + 1, right);
+        }
+    }
+    
+    /**
+     * Internal helper for method mergeSort and mergeSortRoutine. 
+     * @param a an array of CharacterObjects
+     * @param tmpArray an array where the merged result is placed.
+     * @param leftPos
+     * @param rightPos
+     * @param rightEnt 
+     */
+    private void merge(CharacterObject[] a, CharacterObject[] tmpArray, 
+            int leftPos, int rightPos, int rightEnd) {
+        
+        int leftEnd = rightPos - 1;
+        int tmpPos = leftPos;
+        int numElements = rightEnd - leftPos + 1;
+        
+        while (leftPos <= leftEnd && rightPos <= rightEnd) {
+            if (a[leftPos].compareTo(a[rightPos]) <= 0) {
+                tmpArray[tmpPos++] = a[leftPos++];
+            } else {
+                tmpArray[tmpPos++] = a[rightPos++];
+            }
+        }
+        
+        while (leftPos <= leftEnd) {
+            tmpArray[tmpPos++] = a[leftPos++];
+        }
+        
+        while (rightPos <= rightEnd) {
+            tmpArray[tmpPos++] = a[rightPos++];
+        }
+        
+        for (int i = 0; i < numElements; i++, rightEnd--) {
+            a[rightEnd] = tmpArray[rightEnd];
+        }
+    }
+    
 }

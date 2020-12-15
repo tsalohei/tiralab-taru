@@ -40,15 +40,23 @@ public class InputTextTest {
         assertEquals(4, intArray[97]);
     }
     
-    
-    /*
-    @Test 
-    public void getNroOfUniqueCharacters() {
-        InputText input = new InputText("aabbabca");
-        //input.calculate();
-        assertEquals(3, input.getNroOfUniqueCharacters());
-       
+    @Test
+    public void mergeSortTest() {
+        CharacterObject[] array = new CharacterObject[5];
+        array[0] = new CharacterObject('c', 5);
+        array[1] = new CharacterObject('b', 4);
+        array[2] = new CharacterObject('d', 8);
+        array[3] = new CharacterObject('a', 1);
+        array[4] = new CharacterObject('k', 15);
+        
+        InputText input = new InputText("dummy");
+        
+        input.mergeSort(array);
+        
+        assertEquals(1, array[0].getFrequency());
+        assertEquals(4, array[1].getFrequency());
+        assertEquals(15, array[4].getFrequency());
     }
-    */
+    
    
 }
