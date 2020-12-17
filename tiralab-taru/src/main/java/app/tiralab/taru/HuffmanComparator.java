@@ -18,6 +18,5 @@ public class HuffmanComparator implements Comparator<HuffmanNode> {
     @Override
     public int compare(HuffmanNode node1, HuffmanNode node2) {
         return node1.getFreq() - node2.getFreq();
-        
     }
 }

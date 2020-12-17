@@ -1,3 +1,5 @@
+package app.tiralab.taru;
+
 
 import app.tiralab.taru.CharacterObject;
 import app.tiralab.taru.InputText;

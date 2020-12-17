@@ -1,8 +1,4 @@
-package app.tiralab.taru;
-
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
+package app.tiralab.taru.datastructures;
 
 /**
  * This class is an implementation of a Map structure.
@@ -13,16 +9,13 @@ import java.util.List;
 //what is preserved in the map: character-string-pairs
 public class MyMap {
     
-    private final int defaultSize;
+    private static final int DEFAULT_SIZE = 97; // prime number
     private MapItem[] array;
     //total amount of MapItems/size of MyMap
     
-    
     public MyMap() {
-       this.defaultSize = 100;
-       this.array = new MapItem[defaultSize];
+       this.array = new MapItem[DEFAULT_SIZE];
     }
-    
     
     public String get(Character key) {
         int index = index(key);
@@ -76,10 +69,8 @@ public class MyMap {
      * @return int index
      */
     private int index(Character key) {
-        int index = key.hashCode() % this.defaultSize;
+        int index = key.hashCode() % DEFAULT_SIZE;
         return index;
-        //pitääkö varautua siihen että key on null?
-        //return indeksi > 0 ? indeksi : -indeksi;
     }
     
 }

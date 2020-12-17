@@ -13,6 +13,7 @@ public class BitReader {
 
     private final byte[] fileContent;
     private int bitAmount;
+    
     /**
      * Constructor for BitReader
      * @param fileName name of file containing bits
@@ -31,7 +32,6 @@ public class BitReader {
      * Reads the bits in file (for example file.huff) and makes a String
      * corresponding to the bits (for example "101101.."). 
      * @return String that contains 1's and 0's
-     * @throws IOException if reading the File fails
      */
     public String process() {
         
@@ -58,12 +58,9 @@ public class BitReader {
      * @param b byte
      * @param pos position in byte
      */
-    public String getBitAtPos(byte b, int pos) {
-        
+    String getBitAtPos(byte b, int pos) {
         int result = (b >> pos) & 1;
-        
-        return result == 0 ? "0" : "1";
-        
+        return result == 0 ? "0" : "1";    
     }
     
     

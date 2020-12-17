@@ -1,6 +1,8 @@
+package app.tiralab.taru.datastructures;
 
-import app.tiralab.taru.MapItem;
-import app.tiralab.taru.MyMap;
+
+import app.tiralab.taru.datastructures.MapItem;
+import app.tiralab.taru.datastructures.MyMap;
 import org.junit.Test;
 import static org.junit.Assert.*;
 

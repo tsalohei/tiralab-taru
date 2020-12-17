@@ -13,11 +13,11 @@ import java.nio.file.Files;
 
 public class CompressedInput implements Input {
     
-    private int charAmount;
-    private int bitAmount;
-    private char[] chars;
-    private int[] frequencies;
-    private byte[] prefixStringBytes;
+    private final int charAmount;
+    private final int bitAmount;
+    private final char[] chars;
+    private final int[] frequencies;
+    private final byte[] prefixStringBytes;
     
     /**
      * Constructor for CompressedInput. Constructor takes care of the getting
@@ -72,7 +72,7 @@ public class CompressedInput implements Input {
      * Getter for the prefix String (for example "10111011...")
      * @return String prefix String
      */
-    String getPrefixString() {
+    public String getPrefixString() {
         BitReader bitReader = new BitReader(this.prefixStringBytes, this.bitAmount);
         return bitReader.process();        
     }

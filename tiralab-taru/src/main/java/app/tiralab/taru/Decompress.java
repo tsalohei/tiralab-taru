@@ -51,21 +51,21 @@ public class Decompress {
         boolean newFileWasCreated = createNewFile();
         writeToFile(builder.toString());
         
-        //return builder.toString();
         return newFileWasCreated;
     }
     
-    public void writeToFile(String s) throws IOException {
+    void writeToFile(String s) throws IOException {
         BufferedWriter writer = new BufferedWriter(new FileWriter(this.fileName + ".dc"));
         writer.write(s);
     
         writer.close();
     }
+    
     /**
      * TÄYDENNÄ
      * @return 
      */
-    public boolean createNewFile() {
+    private boolean createNewFile() {
         try {
             this.myFileObj = new File(this.fileName + ".dc"); 
             

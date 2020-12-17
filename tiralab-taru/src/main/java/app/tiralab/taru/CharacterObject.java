@@ -2,8 +2,8 @@ package app.tiralab.taru;
 
 public class CharacterObject implements Comparable<CharacterObject> {
 
-    private char character;
-    private int frequency;
+    private final char character;
+    private final int frequency;
     
     public CharacterObject(char character, int frequency) {
         this.character = character;

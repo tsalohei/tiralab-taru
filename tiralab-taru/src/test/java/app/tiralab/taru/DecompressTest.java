@@ -1,8 +1,10 @@
+package app.tiralab.taru;
+
 
 import app.tiralab.taru.Decompress;
 import app.tiralab.taru.HuffmanTree;
 import app.tiralab.taru.InputText;
-import app.tiralab.taru.MyMap;
+import app.tiralab.taru.datastructures.MyMap;
 import app.tiralab.taru.Output;
 import java.io.IOException;
 import java.nio.file.Files;

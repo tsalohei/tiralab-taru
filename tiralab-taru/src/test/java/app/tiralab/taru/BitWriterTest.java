@@ -1,3 +1,5 @@
+package app.tiralab.taru;
+
 
 import app.tiralab.taru.BitWriter;
 import java.io.File;

@@ -1,9 +1,11 @@
-package app.tiralab.taru;
+package app.tiralab.taru.datastructures;
+
+import app.tiralab.taru.HuffmanComparator;
+import app.tiralab.taru.HuffmanNode;
 
 /**
  * Minimum heap where one node is a Huffman Node
  */
-
 public class MyMinHeap {
     
     private HuffmanComparator hc;
@@ -28,7 +30,7 @@ public class MyMinHeap {
         }
         int hole = ++currentSize; 
         
-        for ( ; hole > 1 && (hc.compare(x, this.array[hole / 2]) < 0) ; hole /= 2) {
+        for (; hole > 1 && (hc.compare(x, this.array[hole / 2]) < 0) ; hole /= 2) {
             this.array[hole] = array[hole / 2]; 
         }
         this.array[hole] = x;
@@ -81,7 +83,7 @@ public class MyMinHeap {
         int child = 1; 
         HuffmanNode tmp = this.array[hole];
         
-        for ( ; hole * 2 <= this.currentSize; hole = child) { 
+        for (; hole * 2 <= this.currentSize; hole = child) { 
             child = hole * 2; 
             
             if (child != this.currentSize && //checks if only 1 child
@@ -102,16 +104,11 @@ public class MyMinHeap {
         return this.currentSize;
     }
     
-    
     /**
      * Returns the MyMinHeap as an array of HuffmanNodes
      * @return Array of HuffmanNodes 
      */
     public HuffmanNode[] getMyMinHeapAsArray() {
         return this.array;
-    }
-    
-  
-    
-    
+    }  
 }

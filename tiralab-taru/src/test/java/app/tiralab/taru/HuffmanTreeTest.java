@@ -1,10 +1,12 @@
+package app.tiralab.taru;
+
 
 import app.tiralab.taru.HuffmanNode;
 import app.tiralab.taru.HuffmanTree;
 import app.tiralab.taru.Input;
 import app.tiralab.taru.InputText;
-import app.tiralab.taru.MyMap;
-import app.tiralab.taru.MyMinHeap;
+import app.tiralab.taru.datastructures.MyMap;
+import app.tiralab.taru.datastructures.MyMinHeap;
 //import java.util.Map;
 //import java.util.PriorityQueue;
 import static org.junit.Assert.*;

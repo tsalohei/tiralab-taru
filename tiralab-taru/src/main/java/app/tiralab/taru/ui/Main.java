@@ -1,6 +1,11 @@
-package app.tiralab.taru;
+package app.tiralab.taru.ui;
 
 
+import app.tiralab.taru.CompressedInput;
+import app.tiralab.taru.Decompress;
+import app.tiralab.taru.HuffmanTree;
+import app.tiralab.taru.InputText;
+import app.tiralab.taru.Output;
 import java.io.File;
 import java.io.IOException;
 

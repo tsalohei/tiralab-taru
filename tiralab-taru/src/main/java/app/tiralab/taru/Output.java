@@ -9,11 +9,10 @@ import java.io.IOException;
  */
 public class Output {
     
-    InputText input;
-    File myFileObj;
-    String inputFilename;
-    
-    private HuffmanTree huffmanTree;
+    private final InputText input;
+    private final String inputFilename;
+    private final HuffmanTree huffmanTree;
+    private File myFileObj;
     
     public Output(HuffmanTree tree, InputText input, String inputFilename) {
         this.huffmanTree = tree;
@@ -60,14 +59,14 @@ public class Output {
      * @param c character
      * @return prefix 
      */
-    public String findPrefixForCharacter(char c) {
+    String findPrefixForCharacter(char c) {
         return this.huffmanTree.getPrefixes().get(c);
     }
     
     /**
      * Creates a string that represents the entire input in the coded form.
      */
-    public String createPrefixString() {
+    String createPrefixString() {
         String s = this.input.getString();
         StringBuilder codedInput = new StringBuilder();
         
@@ -84,7 +83,7 @@ public class Output {
      * @return true if new file is created, false if there already is a 
      * compressed file for the same file name
      */    
-    public boolean createNewFile() {
+    private boolean createNewFile() {
         try {
             this.myFileObj = new File(inputFilename + ".huff");
             

@@ -1,8 +1,10 @@
+package app.tiralab.taru;
+
 
 import app.tiralab.taru.HuffmanTree;
 import app.tiralab.taru.InputText;
-import app.tiralab.taru.MapItem;
-import app.tiralab.taru.MyMap;
+import app.tiralab.taru.datastructures.MapItem;
+import app.tiralab.taru.datastructures.MyMap;
 import app.tiralab.taru.Output;
 import org.junit.Before;
 import org.junit.Test;

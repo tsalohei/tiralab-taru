@@ -1,7 +1,11 @@
+package app.tiralab.taru.datastructures;
+
 
 import app.tiralab.taru.HuffmanComparator;
+import app.tiralab.taru.HuffmanComparator;
 import app.tiralab.taru.HuffmanNode;
-import app.tiralab.taru.MyMinHeap;
+import app.tiralab.taru.HuffmanNode;
+import app.tiralab.taru.datastructures.MyMinHeap;
 import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 

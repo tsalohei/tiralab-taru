@@ -1,25 +1,23 @@
 package app.tiralab.taru;
 
-//import java.util.HashMap;
-//import java.util.Map;
+import app.tiralab.taru.datastructures.MyMinHeap;
+import app.tiralab.taru.datastructures.MyMap;
+import app.tiralab.taru.datastructures.MapItem;
 
 /**
  * This class builds a Huffman Tree based on input.
  */
-
 public class HuffmanTree {
     
     private final Input input;
+    private final MyMap myMap;
     private char[] charArray;
     private int[] charFreq;
     private HuffmanNode root;
-    //private Map<Character, String> map;
-    private MyMap myMap;
-    
+        
     public HuffmanTree(Input text) {
         this.input = text;
         this.root = null;
-        //this.map = new HashMap<Character, String>();
         this.myMap = new MyMap();
     }
     
@@ -41,21 +39,18 @@ public class HuffmanTree {
     
     /**
      * This method creates a minimum priority queue where each unique 
- character (represented by a HuffmanNode) is a leaf node.
+     * character (represented by a HuffmanNode) is a leaf node.
      * @param x
      * @param y
      * @return min priority queue (heap where least frequent character is first)
      **/
-    public MyMinHeap buildMinHeap(char[] x, int[] y) {
-        //int n  = input.getNroOfUniqueCharacters();
+    MyMinHeap buildMinHeap(char[] x, int[] y) {
         int n = this.input.getCharArray().length;
 
         MyMinHeap q = new MyMinHeap(n, new HuffmanComparator()); 
   
         for (int i = 0; i < n; i++) {             
-            HuffmanNode node = new HuffmanNode(); 
-            node.setChar(x[i]);
-            node.setFreq(y[i]);
+            HuffmanNode node = new HuffmanNode(x[i], y[i]);
             
             node.setLeftNode(null);
             node.setRightNode(null);
@@ -71,7 +66,7 @@ public class HuffmanTree {
      * @param PriorityQueue where all Huffman nodes are leaves
      * @return the root node that is left in the end
      */
-    public HuffmanNode createInternalNodes(MyMinHeap q) {
+    HuffmanNode createInternalNodes(MyMinHeap q) {
         while (q.getSize() > 1) { 
             
             HuffmanNode firstNode = q.checkMin(); 
@@ -80,18 +75,14 @@ public class HuffmanTree {
             HuffmanNode secondNode = q.checkMin(); 
             q.deleteMin(); 
   
-            HuffmanNode internalNode = new HuffmanNode(); 
-
-            internalNode.setFreq(firstNode.getFreq() + secondNode.getFreq());
-            
-            internalNode.setChar('\u0000');
-            
+            HuffmanNode internalNode = new HuffmanNode(
+                '\u0000', 
+                firstNode.getFreq() + secondNode.getFreq()); 
+           
             internalNode.setLeftNode(firstNode);
-
             internalNode.setRightNode(secondNode);
             
-            root = internalNode; 
-  
+            root = internalNode;  
             q.insert(internalNode); 
         } 
         
@@ -104,7 +95,7 @@ public class HuffmanTree {
      * @param s String Used in the recursive method to allocate the prefix 
      * for each character
      */
-    public void buildPrefixes(HuffmanNode root, String s) {
+    void buildPrefixes(HuffmanNode root, String s) {
         
         if (root == null) {
             return;
@@ -113,8 +104,6 @@ public class HuffmanTree {
         if (root.getLeft() == null && root.getRight() == null  
             && ((int) root.getChar() > 31)) { //31-->visible ascii values
             
-                
-            //map.put(root.getChar(), s);
             MapItem item = new MapItem(root.getChar(), s);
             myMap.put(item);
             
@@ -130,7 +119,6 @@ public class HuffmanTree {
      * @return Map with Character-String -pairs where the String is the prefix
      */
     public MyMap getPrefixes() {
-        //return this.map;
         return this.myMap;
     }
 

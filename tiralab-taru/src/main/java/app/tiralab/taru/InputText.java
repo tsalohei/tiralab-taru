@@ -21,7 +21,7 @@ public class InputText implements Input {
      * the unique characters in the input text, and an integer array their 
      * respective frequencies.
      */
-    void calculate() {
+    private void calculate() {
         int[] intarray = makeArrayFromString(); 
         CharacterObject[] coArray = createCharacterObjectList(intarray);
         setCharFreq(coArray);
@@ -35,7 +35,7 @@ public class InputText implements Input {
      * @param s input String
      * @return int[] array with the abovementioned information
      */ 
-    public int[] makeArrayFromString() {      
+    int[] makeArrayFromString() {      
         int[] array = new int[256]; 
         for (int i = 0; i < s.length(); i++) {
             char current = s.charAt(i);      
@@ -71,7 +71,7 @@ public class InputText implements Input {
      * @param coArray Index means which character is in question, and value 
      * tells the frequency of the alphabet. 
      */
-    public void setCharArray(CharacterObject[] coArray) {
+    private void setCharArray(CharacterObject[] coArray) {
         int n = coArray.length;
         this.chars = new char[n]; 
         for (int i = 0; i < n; i++) {
@@ -85,7 +85,7 @@ public class InputText implements Input {
      * The values are in increasing order of frequency.
      * @param coArray 
      */
-    public void setCharFreq(CharacterObject[] coArray) {
+    private void setCharFreq(CharacterObject[] coArray) {
         int n = coArray.length;
         this.frequencies = new int[n]; 
         for (int i = 0; i < n; i++) {
@@ -99,7 +99,7 @@ public class InputText implements Input {
      * @param intArray
      * @return array of CharacterObject instances
      */
-    public CharacterObject[] createCharacterObjectList(int[] intArray) {
+    CharacterObject[] createCharacterObjectList(int[] intArray) {
         int calculator = 0;
         for (int j = 32; j < intArray.length; j++) {
             if (intArray[j] > 0) { 
@@ -138,7 +138,7 @@ public class InputText implements Input {
      * increasing order of frequency.
      * @param a an array of CharacterObjects.
      */
-    public void mergeSort(CharacterObject[] a) {
+    void mergeSort(CharacterObject[] a) {
         CharacterObject[] tmpArray = new CharacterObject[a.length];
         mergeSortRoutine(a, tmpArray, 0, a.length-1);
     }

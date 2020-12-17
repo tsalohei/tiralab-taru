@@ -1,5 +1,5 @@
 
-package app.tiralab.taru;
+package app.tiralab.taru.datastructures;
 
 public class MapItem {
     
@@ -12,13 +12,6 @@ public class MapItem {
         this.value = value;
         this.nextItem = null;
     }
-    
-    /*
-    public void put(String key, Character value) { //overwrite?
-        this.key = key;
-        this.value = value;  
-    }
-    */
     
     public Character getKey() {
         return this.key;

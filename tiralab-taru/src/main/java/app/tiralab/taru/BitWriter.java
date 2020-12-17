@@ -15,9 +15,9 @@ import java.nio.ByteBuffer;
  */
 public class BitWriter {
     
+    private final OutputStream stream;
     private int oneByte;
-    private int bitCalculator;
-    private OutputStream stream;
+    private int bitCalculator;    
     private int bytesWritten = 0;
     private int bitsWritten = 0;
     
@@ -37,7 +37,7 @@ public class BitWriter {
      * @param s String of 1's and 0's 
      * @throws IOException if 
      */
-    public void writeBitsInString(String s) throws IOException {
+    void writeBitsInString(String s) throws IOException {
         for (int i = 0; i < s.length(); i++) {
             char bit = s.charAt(i);
             
@@ -77,7 +77,7 @@ public class BitWriter {
      * Fills in (the last) byte with zeros if it has less than 8 bits.
      * @throws IOException if writing to file fails 
      */
-    public void stop() throws IOException {
+    void stop() throws IOException {
         while (bitCalculator > 0 && bitCalculator <= 8) {
             writeBit(0);
         }
@@ -88,7 +88,7 @@ public class BitWriter {
      * Closes the writing operation. 
      * @throws IOException 
      */
-    public void closeStream() throws IOException {
+    void closeStream() throws IOException {
         stream.close();
     }
  
@@ -97,7 +97,7 @@ public class BitWriter {
      * @param n number of unique characters
      * @throws IOException if writing to file fails.
      */
-    public void writeNumberOfCharacters(int n) throws IOException {
+    void writeNumberOfCharacters(int n) throws IOException {
         ByteBuffer byteBuffer = ByteBuffer.allocate(4); //4 bytes for one Integer
         byteBuffer.putInt(n);
         byte[] byteArray = byteBuffer.array();
@@ -110,7 +110,7 @@ public class BitWriter {
      * @param charArray of unique characters
      * @throws IOException if writing to file fails.
      */
-    public void writeCharArray(char[] charArray) throws IOException {
+    void writeCharArray(char[] charArray) throws IOException {
         ByteBuffer byteBuffer = ByteBuffer.allocate(2 * charArray.length); //2 bytes for 1 char
         for (char c : charArray) {
             byteBuffer.putChar(c);
@@ -125,7 +125,7 @@ public class BitWriter {
      * @param freqArray frequencies of unique characters
      * @throws IOException 
      */
-    public void writeFreqArray(int[] freqArray) throws IOException {
+    void writeFreqArray(int[] freqArray) throws IOException {
         ByteBuffer byteBuffer = ByteBuffer.allocate(4 * freqArray.length);
         for (int k : freqArray) {
             byteBuffer.putInt(k);
@@ -140,7 +140,7 @@ public class BitWriter {
      * possible zeros from end.
      * @throws IOException if writing to file fails. 
      */
-    public void writeHowManyBits() throws IOException {
+    void writeHowManyBits() throws IOException {
         ByteBuffer byteBuffer = ByteBuffer.allocate(4); //4 bytes for one Integer
         
         byteBuffer.putInt(this.bitsWritten);

@@ -1,3 +1,5 @@
+package app.tiralab.taru;
+
 
 import app.tiralab.taru.BitReader;
 import java.io.IOException;

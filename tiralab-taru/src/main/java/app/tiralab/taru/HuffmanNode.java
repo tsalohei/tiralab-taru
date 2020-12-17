@@ -11,9 +11,6 @@ public class HuffmanNode implements Serializable {
     private HuffmanNode left;
     private HuffmanNode right;
     
-    public HuffmanNode () {
-    }
-    
     public HuffmanNode(char c, int f) {
         this.c = c;
         this.freq = f;
