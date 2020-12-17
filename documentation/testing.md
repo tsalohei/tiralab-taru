@@ -10,7 +10,7 @@ Testing results with 10 different files are presented in the table and graph bel
 
 | Text                                        | Original file   (bytes) | Compressed file   (bytes) | Compression rate | Compression time (s) | Decompression   time |
 |---------------------------------------------|-------------------------|---------------------------|------------------|----------------------|----------------------|
-| 1. Rakas isänmaani                          | 193401                  | 99889                     | -48.35%          | 0.151839746          | 0.096862313          |
+|[1. Rakas isänmaani](http://www.gutenberg.org/cache/epub/46655/pg46655.txt)                          | 193401                  | 99889                     | -48.35%          | 0.151839746          | 0.096862313          |
 | 2. The Hobbit, full                         | 531147                  | 280572                    | -47.18%          | 0.242954207          | 0.122804458          |
 | 3. Ulysses                                  | 1553256                 | 858265                    | -44.74%          | 0.417022638          | 0.27458819           |
 | 4. The Hobbit, 1000 rows                    | 41949                   | 23270                     | -44.53%          | 0.111754581          | 0.061255163          |
