@@ -33,7 +33,8 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>        
-                <configuration>
+                <version>3.3</version>
+		<configuration>
                   <archive>
                     <manifest>
                       <addClasspath>true</addClasspath>
