@@ -88,9 +88,7 @@ public class Main {
         if (newDecompressedFileCreated == true) {
             String filename2 = filename.substring(0, filename.lastIndexOf(".")) + ".dc";
             printResults(start, finish, filename, filename2);
-        }
-        
-        
+        }  
     }
     
     public static boolean fileEndsTxtOrHuff(String fileName) {

@@ -15,9 +15,9 @@ public class Decompress {
     private final String s;
     private final HuffmanTree tree;
     File myFileObj;
-    String fileName; //UUSI
+    String fileName; 
     
-    public Decompress(String s, HuffmanTree tree, String inputFilename) { //filename UUSI!!
+    public Decompress(String s, HuffmanTree tree, String inputFilename) {
         this.s = s;
         this.tree = tree;
         this.fileName = inputFilename.substring(0, inputFilename.lastIndexOf("."));
@@ -83,20 +83,4 @@ public class Decompress {
             return false;
         }
     }
-    /*
-    public void createNewFile() {
-        try {
-            this.myFileObj = new File(this.fileName + ".dc"); // tähän filen oikea nimi mukaan
-            
-            if (myFileObj.createNewFile() == false) {
-                System.out.println("File " + this.fileName + ".dc already "
-                        + "exists. Delete the file to make a new one.");
-            }
-            
-        } catch (IOException e) {
-            System.out.println("Error!");
-            e.printStackTrace();
-        }
-    }
-    */
 }
