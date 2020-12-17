@@ -27,8 +27,7 @@ public class FileInput {
             }
             myScanner.close();
         } catch (FileNotFoundException e) {
-            System.out.println("Error!");
-            e.printStackTrace();
+            System.out.println("File with this name was not found!");
         }
         
         return builder.toString();

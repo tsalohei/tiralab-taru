@@ -38,7 +38,6 @@ public class BitWriter {
      * @throws IOException if 
      */
     public void writeBitsInString(String s) throws IOException {
-        System.out.println("WRITING STRING " + s);
         for (int i = 0; i < s.length(); i++) {
             char bit = s.charAt(i);
             
@@ -142,7 +141,6 @@ public class BitWriter {
      * @throws IOException if writing to file fails. 
      */
     public void writeHowManyBits() throws IOException {
-        System.out.println("WRITTEN BIT COUNTER (in BitWriter) " + this.bitsWritten);
         ByteBuffer byteBuffer = ByteBuffer.allocate(4); //4 bytes for one Integer
         
         byteBuffer.putInt(this.bitsWritten);

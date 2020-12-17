@@ -26,9 +26,9 @@ public class Decompress {
     /**
      * Takes in prefix String ("01010111...") and turns it into a String
      * ("some random text...").
-     * @return String 
+     * @return String TÄYDENNÄ
      */
-    public String process() throws IOException {
+    public boolean process() throws IOException {
         HuffmanNode root = tree.getRoot();
         StringBuilder builder = new StringBuilder();
         
@@ -48,10 +48,11 @@ public class Decompress {
             }
         }
         
-        createNewFile();
+        boolean newFileWasCreated = createNewFile();
         writeToFile(builder.toString());
         
-        return builder.toString();
+        //return builder.toString();
+        return newFileWasCreated;
     }
     
     public void writeToFile(String s) throws IOException {
@@ -60,7 +61,29 @@ public class Decompress {
     
         writer.close();
     }
-    
+    /**
+     * TÄYDENNÄ
+     * @return 
+     */
+    public boolean createNewFile() {
+        try {
+            this.myFileObj = new File(this.fileName + ".dc"); 
+            
+            if (myFileObj.createNewFile() == false) {
+                System.out.println("A compressed version of your file already "
+                        + "exists (" + this.fileName + ".dc).");
+                return false;
+            } else {
+                return true;
+            }
+            
+        } catch (IOException e) {
+            System.out.println("Error!");
+            e.printStackTrace();
+            return false;
+        }
+    }
+    /*
     public void createNewFile() {
         try {
             this.myFileObj = new File(this.fileName + ".dc"); // tähän filen oikea nimi mukaan
@@ -75,4 +98,5 @@ public class Decompress {
             e.printStackTrace();
         }
     }
+    */
 }

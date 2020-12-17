@@ -18,7 +18,6 @@ public class MyMinHeap {
         this.currentSize = 0; //current size of heap
     }
     
-    //System.err.println and throws overflow also possible for full heap
     /**
      * Adds a HuffmanNode instance to myMinHeap.
      * @param x HuffmanNode 

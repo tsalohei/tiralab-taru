@@ -27,8 +27,15 @@ public class Output {
         }
     }
     
-    public void process() throws FileNotFoundException, IOException {
-        createNewFile();
+    /**
+     * Creates a compressed file. The file has information about the text input,
+     * and has necessary header information needed for decompression.
+     * @return true is a new file is made, false otherwise
+     * @throws IOException if there is an error with writing to file
+     * @throws FileNotFoundException if myFileObj is not found
+     */
+    public boolean process() throws FileNotFoundException, IOException {
+        boolean newFileIsCreated = createNewFile();
         String s = createPrefixString();
         
         BitWriter bitWriter = new BitWriter(myFileObj);
@@ -45,6 +52,7 @@ public class Output {
         bitWriter.writeHowManyBits();
         bitWriter.closeStream();
         
+        return newFileIsCreated;
     }
     
     /**
@@ -73,19 +81,25 @@ public class Output {
     /**
      * Creates a new file where the bytes are written. File name ends in 
      * ".huff".
-     */
-    public void createNewFile() {
+     * @return true if new file is created, false if there already is a 
+     * compressed file for the same file name
+     */    
+    public boolean createNewFile() {
         try {
             this.myFileObj = new File(inputFilename + ".huff");
             
             if (myFileObj.createNewFile() == false) {
-                System.out.println("File " + inputFilename + ".huff already "
-                        + "exists. Delete the file to make a new one.");
+                System.out.println("A compressed version of your file already "
+                        + "exists (" + inputFilename + ".huff).");
+                return false;
+            } else {
+                return true;
             }
             
         } catch (IOException e) {
             System.out.println("Error!");
             e.printStackTrace();
+            return false;
         }
     }
     

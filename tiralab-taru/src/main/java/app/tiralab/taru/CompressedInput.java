@@ -36,13 +36,11 @@ public class CompressedInput implements Input {
         this.chars = new char[charAmount];
         for (int i = 0; i < charAmount; i++) {
             chars[i] = bb.getChar();
-            System.out.println("Char: " + chars[i]);
         }
         
         this.frequencies = new int[charAmount];
         for (int i = 0; i < charAmount; i++) {
             frequencies[i] = bb.getInt();
-            System.out.println("Freq: " + frequencies[i]);
         }
         
         this.prefixStringBytes = new byte[bb.remaining() - 4];
