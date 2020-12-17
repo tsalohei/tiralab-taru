@@ -1,8 +1,12 @@
 # Testing documentation
 
-Testing results with 10 different files are presented in the table and graph below. All files were text files.
+## Automated testing
 
-![Compression rates](https://github.com/tsalohei/tiralab-taru/blob/main/documentation/images/testing_results.png)
+Testing was done with Unit tests in most classes. For the file writing operations testing was done as integration testing. Instructions for executing the tests can be Found from the [README.md](https://github.com/tsalohei/tiralab-taru#tests) file.  
+
+## Performance testing
+
+Testing results with 10 different files are presented in the table and graph below. All files were text files.
 
 | Text                                        | Original file   (bytes) | Compressed file   (bytes) | Compression rate | Compression time (s) | Decompression   time |
 |---------------------------------------------|-------------------------|---------------------------|------------------|----------------------|----------------------|
@@ -16,6 +20,8 @@ Testing results with 10 different files are presented in the table and graph bel
 | 8. The Hobbit, 10 rows                      | 34                      | 91                        | 167.65%          | 0.05019651           | 0.025430724          |
 | 9. File with 22 partly different characters | 23                      | 83                        | 260.87%          | 0.048155241          | 0.026119909          |
 | 10. File with 22 characters (all different) | 26                      | 153                       | 488.46%          | 0.05068918           | 0.024832483          |
+
+![Compression rates](https://github.com/tsalohei/tiralab-taru/blob/main/documentation/images/testing_results.png)
 
 Results show that compressing small files is inefficient; the file size actually increases. The worst compression rate was obtained with a small file where all characters were different (file 10). If the file was a real book (i.e. a long text), the compressed file was smaller than the original file (Files 1,2,3,5). Even a version of the Hobbit where 100 first rows were included was slightly compressed.
 
