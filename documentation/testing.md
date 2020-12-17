@@ -4,7 +4,7 @@
 
 Testing was done with Unit tests in most classes. For the file writing operations testing was done as integration testing. Instructions for executing the tests can be Found from the [README.md](https://github.com/tsalohei/tiralab-taru#tests) file.  
 
-## Performance testing
+## Empirical testing
 
 Testing results with 10 different files are presented in the table and graph below. All files were text files.
 
