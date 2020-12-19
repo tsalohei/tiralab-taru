@@ -1,4 +1,4 @@
-package app.tiralan.taru.performance;
+package app.tiralab.taru.performance;
 
 import app.tiralab.taru.ui.Main;
 import java.io.IOException;

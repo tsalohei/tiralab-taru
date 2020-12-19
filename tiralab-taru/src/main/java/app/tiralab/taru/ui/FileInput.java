@@ -8,14 +8,14 @@ import java.util.Scanner;
  * Class FileInput is responsible for turning the contents of the file given by 
  * the user to a String.
  */
-class FileInput {
+public class FileInput {
     
     /**
      * Returns the content of specified file as String.
      * @param filename
      * @return String
      */
-    String getFile(String filename) {              
+    public String getFile(String filename) {              
         StringBuilder builder = new StringBuilder();
         try {
             File myFileObj = new File(filename);
