@@ -1,6 +1,6 @@
 # User instructions
 
-This application is a command line application for compressing .txt-files. User can clone the project in entirety, or use the released jar file. When user compresses a .txt file (file.txt), the application creates a compressed version of it (file.huff). User can also decompress the .huff-file, resulting in a file with extension .dc (file.dc).
+This application is a command line application for compressing .txt-files. User can clone the project in entirety, or use the [released jar file](https://github.com/tsalohei/tiralab-taru/releases/tag/release2). When user compresses a .txt file (file.txt), the application creates a compressed version of it (file.huff). User can also decompress the .huff-file, resulting in a file with extension .dc (file.dc).
 
 If user wants to clone the entire project the following command needs to be run first (skip this when using jar file): 
 
