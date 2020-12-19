@@ -4,7 +4,7 @@ import app.tiralab.taru.HuffmanComparator;
 import app.tiralab.taru.HuffmanNode;
 
 /**
- * Minimum heap where one node is a Huffman Node
+ * Implementation for a minimum heap where one node is a HuffmanNode.
  */
 public class MyMinHeap {
     
@@ -13,11 +13,17 @@ public class MyMinHeap {
     private int currentSize;
     private HuffmanNode[] array;
    
+    /**
+     * Constructor for MyMinHeap. Indexing starts from 1 (hence array size is 
+     * capacity + 1). 
+     * @param capacity capacity of the heap
+     * @param hc HuffmanComparator that helps in comparing HuffmanNodes
+     */
     public MyMinHeap(int capacity, HuffmanComparator hc) {
         this.capacity = capacity;
         this.hc = hc;
-        this.array = new HuffmanNode[capacity + 1]; //indexing starts from 1
-        this.currentSize = 0; //current size of heap
+        this.array = new HuffmanNode[capacity + 1];
+        this.currentSize = 0; 
     }
     
     /**
@@ -30,14 +36,14 @@ public class MyMinHeap {
         }
         int hole = ++currentSize; 
         
-        for (; hole > 1 && (hc.compare(x, this.array[hole / 2]) < 0) ; hole /= 2) {
+        for (; hole > 1 && (hc.compare(x, this.array[hole / 2]) < 0); hole /= 2) {
             this.array[hole] = array[hole / 2]; 
         }
         this.array[hole] = x;
     }
     
     /**
-     * Checks what is the smallest HuffmanNode in the MyMinHeap.
+     * Checks what is the smallest HuffmanNode in MyMinHeap.
      * @return min HuffmanNode, or null if heap is empty
      */
     public HuffmanNode checkMin() {
@@ -48,7 +54,7 @@ public class MyMinHeap {
     }
     
     /**
-     * Checks if MyMinHeap is empty
+     * Checks if MyMinHeap is empty.
      * @return true if heap is empty, false if not empty
      */
     public boolean isEmpty() {
@@ -88,9 +94,9 @@ public class MyMinHeap {
             
             if (child != this.currentSize && //checks if only 1 child
                     this.hc.compare(this.array[child + 1], array[child]) < 0) { 
-                    child++; 
+                child++; 
             }         
-            if (this.hc.compare(array[child], tmp ) < 0) { 
+            if (this.hc.compare(array[child], tmp) < 0) { 
                 this.array[hole] = this.array[child];
             } else {
                 break;
@@ -100,6 +106,10 @@ public class MyMinHeap {
         this.array[hole] = tmp;
     }
     
+    /**
+     * Getter for MyMinHeap size-
+     * @return size int
+     */
     public int getSize() {
         return this.currentSize;
     }

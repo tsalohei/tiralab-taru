@@ -10,7 +10,7 @@ import java.nio.ByteBuffer;
 
 
 /**
- * This class is responsible of saving the coded String input (for example 
+ * This class is responsible of saving the prefix String (for example 
  * "1001101...") to file as bits.
  */
 public class BitWriter {
@@ -18,7 +18,6 @@ public class BitWriter {
     private final OutputStream stream;
     private int oneByte;
     private int bitCalculator;    
-    private int bytesWritten = 0;
     private int bitsWritten = 0;
     
     /**
@@ -33,9 +32,9 @@ public class BitWriter {
     }
     
     /**
-     * Writes the coded String input (for example "100111..") to file as bits.
+     * Writes the prefix String (for example "100111..") to file as bits.
      * @param s String of 1's and 0's 
-     * @throws IOException if 
+     * @throws IOException if writing fails
      */
     void writeBitsInString(String s) throws IOException {
         for (int i = 0; i < s.length(); i++) {
@@ -51,7 +50,7 @@ public class BitWriter {
     }
     /**
      * Writes a bit (represented by an Integer 0 or 1) to file.
-     * @param bit
+     * @param bit represented by an int
      * @throws IOException if writing to file fails
      */
     private void writeBit(int bit) throws IOException {
@@ -64,7 +63,6 @@ public class BitWriter {
             this.bitsWritten++;
             
             if (bitCalculator == 8) {                
-                bytesWritten++;
                 
                 this.stream.write(oneByte); 
                 this.oneByte = 0;
@@ -86,7 +84,7 @@ public class BitWriter {
     
     /**
      * Closes the writing operation. 
-     * @throws IOException 
+     * @throws IOException if file operation fails
      */
     void closeStream() throws IOException {
         stream.close();
@@ -106,7 +104,7 @@ public class BitWriter {
     }
     
     /**
-     * Writes to file the char array used by HuffmanTree class.
+     * Writes to file the char array used by HuffmanTree.
      * @param charArray of unique characters
      * @throws IOException if writing to file fails.
      */

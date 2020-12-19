@@ -15,6 +15,10 @@ public class HuffmanTree {
     private int[] charFreq;
     private HuffmanNode root;
         
+    /**
+     * Constructor for HuffmanTree
+     * @param text Instance of a class that implements interface Input
+     */
     public HuffmanTree(Input text) {
         this.input = text;
         this.root = null;
@@ -22,7 +26,7 @@ public class HuffmanTree {
     }
     
     /**
-     * 
+     * Creates a HuffmanTree.
      * @return HuffmanNode which is the root node for HuffmanTree 
      */
     public HuffmanNode create() {
@@ -42,7 +46,7 @@ public class HuffmanTree {
      * character (represented by a HuffmanNode) is a leaf node.
      * @param x
      * @param y
-     * @return min priority queue (heap where least frequent character is first)
+     * @return MyMinHeap (heap where least frequent character is first)
      **/
     MyMinHeap buildMinHeap(char[] x, int[] y) {
         int n = this.input.getCharArray().length;
@@ -90,7 +94,8 @@ public class HuffmanTree {
     }
         
     /**
-     * This method builds a unique prefix for each unique character.
+     * This method builds a unique prefix String (for example "101") for each 
+     * unique character.
      * @param root Root node 
      * @param s String Used in the recursive method to allocate the prefix 
      * for each character
@@ -116,7 +121,7 @@ public class HuffmanTree {
     
     /**
      * Getter for the prefixes.
-     * @return Map with Character-String -pairs where the String is the prefix
+     * @return MyMap with Character-String -pairs where String is the prefix
      */
     public MyMap getPrefixes() {
         return this.myMap;
@@ -130,10 +135,18 @@ public class HuffmanTree {
         return this.root;
     }
     
+    /**
+     * Getter for character array
+     * @return char array
+     */
     public char[] getCharArray() {
         return this.charArray;
     }
     
+    /**
+     * Getter for frequency array
+     * @return int array
+     */
     public int[] getFreqArray() {
         return this.charFreq;
     }

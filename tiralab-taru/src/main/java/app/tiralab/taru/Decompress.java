@@ -6,9 +6,9 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 /**
- * This is the first version for decompression. First we just read the coded 
- * String input (for example "1011001.."), and re-create the input String from 
- * that with the help of the HuffmanTree/root node associated with the input.
+ * This class creates a String (for example "hello...") out of a prefix String 
+ * ("01101100..") with the help of a HuffmanTree, and is responsible for
+ * writing the String to file. 
  */
 public class Decompress {
     
@@ -17,6 +17,12 @@ public class Decompress {
     File myFileObj;
     String fileName; 
     
+    /**
+     * Constructor for Decompress
+     * @param s String
+     * @param tree HuffmanTree
+     * @param inputFilename String
+     */
     public Decompress(String s, HuffmanTree tree, String inputFilename) {
         this.s = s;
         this.tree = tree;
@@ -24,14 +30,14 @@ public class Decompress {
     }
     
     /**
-     * Takes in prefix String ("01010111...") and turns it into a String
-     * ("some random text...").
-     * @return String TÄYDENNÄ
+     * Takes in prefix String ("01010111..."), turns it into a String
+     * ("hello..."), and writes to file.
+     * @return true if writing to file is successful, false otherwise 
+     * @throws IOException if writing to file fails
      */
     public boolean process() throws IOException {
         HuffmanNode root = tree.getRoot();
-        StringBuilder builder = new StringBuilder();
-        
+        StringBuilder builder = new StringBuilder();        
         HuffmanNode currentNode = root;
         for (int i = 0; i < s.length(); i++) {
             if (s.charAt(i) == '0') {
@@ -47,23 +53,27 @@ public class Decompress {
                 currentNode = root;
             }
         }
-        
+     
         boolean newFileWasCreated = createNewFile();
-        writeToFile(builder.toString());
-        
+        writeToFile(builder.toString());        
         return newFileWasCreated;
     }
     
+    /**
+     * Writes a String (for example "Hello...") to file.
+     * @param s String
+     * @throws IOException if writing to file fails
+     */
     void writeToFile(String s) throws IOException {
-        BufferedWriter writer = new BufferedWriter(new FileWriter(this.fileName + ".dc"));
+        BufferedWriter writer = new BufferedWriter(new FileWriter(this.fileName 
+                + ".dc"));
         writer.write(s);
-    
         writer.close();
     }
     
     /**
-     * TÄYDENNÄ
-     * @return 
+     * Creates a new file that ends in .dc (for example file.dc).
+     * @return true if new file is created, false otherwise
      */
     private boolean createNewFile() {
         try {

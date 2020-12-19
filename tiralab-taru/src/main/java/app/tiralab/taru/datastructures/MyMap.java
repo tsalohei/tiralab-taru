@@ -1,29 +1,34 @@
 package app.tiralab.taru.datastructures;
 
 /**
- * This class is an implementation of a Map structure.
+ * This class is an implementation of a Map structure. MyMap preserves
+ * MapItems (i.e. character-String pairs). MyMap has an array of MapItems, and
+ * within one array index there can be several MapItems in a linked list 
+ * structure.
  */
 
-//In class huffmantree: put
-//in Output: iterate map (get map from tree and findPrefixForCharacter)
-//what is preserved in the map: character-string-pairs
 public class MyMap {
     
     private static final int DEFAULT_SIZE = 97; // prime number
     private MapItem[] array;
-    //total amount of MapItems/size of MyMap
     
+    /**
+     * Constructor for MyMap. Creates an array of MapItems.
+     */
     public MyMap() {
-       this.array = new MapItem[DEFAULT_SIZE];
+        this.array = new MapItem[DEFAULT_SIZE];
     }
     
+    /**
+     * Getter for the value associated with the given key.
+     * @param key char
+     * @return String 
+     */
     public String get(Character key) {
         int index = index(key);
         
-        //mennään arrayssä oikeaan indexiin
         MapItem current = this.array[index];
         
-        //käydään läpi alkiot ko. indeksistä
         while (current != null) {
             if (current.getKey().equals(key)) {
                 return current.getValue();
@@ -31,35 +36,38 @@ public class MyMap {
             
             current = current.getNext();     
         }
-         //keissi: key:tä ei löydy       
+             
         return null;
     }
     
+    /**
+     * Puts a MapItem to MyMap. If there already is a MapItem with the same key,
+     * the value associated to that key is overwritten.
+     * @param item MapItem that is placed to the MyMap
+     */
     public void put(MapItem item) {
         int index = index(item.getKey());
         
-        //if there is NO item in index
         if (this.array[index] == null) {
             this.array[index] = item; 
         
-        //if there IS an item at the index
         } else {
             MapItem current = this.array[index];
                
             
             while (true) {
-                if (current.getKey().equals(item.getKey())) { //sama key eli esim. "1011"
+                if (current.getKey().equals(item.getKey())) { 
                     current.setValue(item.getValue());   
                     return;
                 }
                 
-                if (current.getNext() != null) { //seuraava on olemassa
+                if (current.getNext() != null) { 
                     current = current.getNext();
-                } else { //ei seuraavaa eli ollaan vikassa itemissa
-                    break; //ja siirrytään ulos loopista
+                } else { 
+                    break; 
                 }                
             }
-            current.setNext(item); //ja asetetaan seuraava
+            current.setNext(item); 
         }
     }
     

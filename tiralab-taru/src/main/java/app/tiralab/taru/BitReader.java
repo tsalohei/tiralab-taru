@@ -6,23 +6,20 @@ import java.nio.file.Files;
 
 
 /**
- * This class gets a file containing bits as input (for example file.huff), and
- * turns it into a String ("1010011..").
+ * This class gets an array of bytes and turns it into a prefix String 
+ * ("1010011..").
  */
 public class BitReader {
 
     private final byte[] fileContent;
     private int bitAmount;
     
+    
     /**
      * Constructor for BitReader
-     * @param fileName name of file containing bits
+     * @param fileContent byte array
+     * @param bitAmount int
      */
-    public BitReader(String fileName) throws IOException {
-        File myFile = new File(fileName);       
-        this.fileContent = Files.readAllBytes(myFile.toPath());      
-    }
-    
     public BitReader(byte[] fileContent, int bitAmount) {
         this.fileContent = fileContent;
         this.bitAmount = bitAmount;

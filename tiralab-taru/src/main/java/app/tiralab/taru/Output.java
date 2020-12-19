@@ -5,7 +5,9 @@ import java.io.FileNotFoundException;
 import java.io.IOException; 
 
 /**
- * This class is responsible for printing and saving the output.
+ * This class is responsible for saving the prefix String and header information
+ * to a file (for example file.huff). Header information is needed when 
+ * decompressing the file.
  */
 public class Output {
     
@@ -20,7 +22,8 @@ public class Output {
         this.input = input;
         
         if (inputFilename.contains(".")) {
-            this.inputFilename = inputFilename.substring(0, inputFilename.lastIndexOf("."));    
+            this.inputFilename = inputFilename.substring(0, inputFilename
+                    .lastIndexOf("."));    
         } else {
             this.inputFilename = inputFilename;
         }
@@ -64,7 +67,7 @@ public class Output {
     }
     
     /**
-     * Creates a string that represents the entire input in the coded form.
+     * Creates a prefix String (for example "101100...").
      */
     String createPrefixString() {
         String s = this.input.getString();

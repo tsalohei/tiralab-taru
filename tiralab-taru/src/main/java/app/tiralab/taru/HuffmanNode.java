@@ -1,11 +1,9 @@
 package app.tiralab.taru;
 
-import java.io.Serializable;
-
 /**
  * This class represents one node used in a HuffmanTree.
  */
-public class HuffmanNode implements Serializable {
+public class HuffmanNode  {
     private char c;
     private int freq;
     private HuffmanNode left;

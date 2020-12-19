@@ -13,17 +13,15 @@ import java.io.IOException;
 public class Main { 
     public static void main(String[] args) throws IOException   {
         
-        
         //if not run from command line
         String fileName = "book.txt";
         
-        
         if (args.length == 0) {
             System.out.println("***Welcome to compress and decompress your file" 
-             + "with Huffman algorithm!***");           
+                + "with Huffman algorithm!***");           
             System.out.println("Give the file name as argument. A file ending"
-                    + " in .txt will be compressed, and a file ending in .huff"
-                    + " will be decompressed.");
+                + " in .txt will be compressed, and a file ending in .huff"
+                + " will be decompressed.");
             System.exit(0);
         } else if (args.length == 1) {
             System.out.println("***Welcome to compress and decompress your file "
@@ -70,7 +68,8 @@ public class Main {
         long finish = System.nanoTime();
 
         if (newCompressedFileCreated == true) {
-            String filenameWithoutTxt = fileName.substring(0, fileName.lastIndexOf("."));
+            String filenameWithoutTxt = fileName.substring(0, fileName
+                    .lastIndexOf("."));
             String resultFilename = filenameWithoutTxt + ".huff";
             printResults(start, finish, fileName, resultFilename);              
         }
@@ -113,7 +112,7 @@ public class Main {
         long percentage = Math.round(result.length() * 10.0 / initial.length() * 10.0);
         System.out.println("Resulting file is " + percentage + " % of initial "
                 + "file size.");
-        System.out.println("It took "+ ((finish - start)/1e9)+ " s to "
+        System.out.println("It took " + ((finish - start) / 1e9) + " s to "
                     + "process your file.");
     }
 }

@@ -6,9 +6,9 @@ import java.nio.ByteBuffer;
 import java.nio.file.Files;
 
 /**
- * Class CompressedInput gets as parameter the name of a compressed file 
- * (for example "book.huff") and re-creates variables that are needed to 
- * decompress the file again to readable format. 
+ * This class gets as parameter the name of a compressed file (for example 
+ * "book.huff") and re-creates variables that are needed to decompress the file
+ * again to a readable format. 
  */
 
 public class CompressedInput implements Input {
@@ -22,8 +22,8 @@ public class CompressedInput implements Input {
     /**
      * Constructor for CompressedInput. Constructor takes care of the getting
      * necessary variables from the file.
-     * @param fileName is used to get the File object
-     * @throws IOException 
+     * @param fileName is used to get the file object
+     * @throws IOException if reading from the file fails
      */
     public CompressedInput(String fileName) throws IOException {
         File file = new File(fileName);
@@ -50,7 +50,7 @@ public class CompressedInput implements Input {
     }
       
     /**
-     * Getter for char array where each character represents a unique character
+     * Getter for char array where each character represents a unique character.
      * @return char array
      */
     @Override
@@ -59,12 +59,11 @@ public class CompressedInput implements Input {
     }
 
     /**
-     * Getter for frequency array (frequencies of the unique characters)
-     * @return 
+     * Getter for frequency array (frequencies of the unique characters).
+     * @return int array
      */
     @Override
     public int[] getCharFreq() {
-        //return this.getCharFreq();
         return this.frequencies;
     }
     

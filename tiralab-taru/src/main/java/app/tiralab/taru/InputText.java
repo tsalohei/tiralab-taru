@@ -1,9 +1,9 @@
 package app.tiralab.taru;
 
 /**
- * Class Input handles the String input. This class processes information about
- * the String so that the information is available in the correct format to the 
- * HuffmanTree class. 
+ * Class Input handles the String input (for example "hello..."). This class 
+ * processes information about the String so that the information is available 
+ * in the correct format to the HuffmanTree class. 
  */
 public class InputText implements Input {
        
@@ -11,6 +11,10 @@ public class InputText implements Input {
     private char[] chars;
     private int[] frequencies;
     
+    /**
+     * Constructor for InputText.
+     * @param input String (for example "hello...") 
+     */
     public InputText(String input) { 
         this.s = input;
         calculate(); 
@@ -120,7 +124,6 @@ public class InputText implements Input {
                 k++;
             }
         }
-
         mergeSort(coArray);
         return coArray;
     }
@@ -140,7 +143,7 @@ public class InputText implements Input {
      */
     void mergeSort(CharacterObject[] a) {
         CharacterObject[] tmpArray = new CharacterObject[a.length];
-        mergeSortRoutine(a, tmpArray, 0, a.length-1);
+        mergeSortRoutine(a, tmpArray, 0, a.length - 1);
     }
     
     /**
@@ -170,8 +173,7 @@ public class InputText implements Input {
      * @param rightEnt 
      */
     private void merge(CharacterObject[] a, CharacterObject[] tmpArray, 
-            int leftPos, int rightPos, int rightEnd) {
-        
+            int leftPos, int rightPos, int rightEnd) {        
         int leftEnd = rightPos - 1;
         int tmpPos = leftPos;
         int numElements = rightEnd - leftPos + 1;
