@@ -2,7 +2,7 @@
 
 ## Automated testing
 
-Testing was done with Unit tests in most classes. For the file writing operations testing was done as integration testing. Instructions for executing the tests can be Found from the [README.md](https://github.com/tsalohei/tiralab-taru#tests) file.  
+Testing was done with Unit tests in most classes. Writing to and from file was done as an integration test to verify that the content of the original file would match the content of the decompressed file. Performance test was done with file 4 in the table below, and this file is included in the project.  Instructions for executing the tests can be Found from the [README.md](https://github.com/tsalohei/tiralab-taru#tests) file.  
 
 ## Empirical testing
 
