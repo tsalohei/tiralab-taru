@@ -12,7 +12,7 @@ The Huffman algorithm works in time O(n log n) when there are n characters in th
 
 ## Improvement “backlog”
 
-The class Input has more complexity than would be needed. Refactoring that class would clarify the application. Package Logic has a lot of classes; these could be divided into smaller packages if the responsibilities of the classes would be clarified and made more independent. Providing support for other than text files would improve the application. Error handling could be unified and UI improved to be interactive.  
+The class Input has more complexity than would be needed. Refactoring that class would clarify the application. Package Logic has a lot of classes; these could be divided into smaller packages if the responsibilities of the classes would be clarified and made more independent. Providing support for other than text files would improve the application. Error handling could be unified.  
 
 ## Sources and references
 
