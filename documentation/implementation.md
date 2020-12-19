@@ -4,7 +4,7 @@
 
 The program has three layers. Package UI handles interaction with the user, package logic contains the logic of Huffman algorithm as well as file operations. Package data structures has own implementations of data structures needed for the Huffman algorithm (minimum heap and map). The data structures are designed to be used by classes in package Logic. This means that they don’t have all the possible methods that could be useful for a map, for example.
 
-
+![packages](https://github.com/tsalohei/tiralab-taru/blob/main/documentation/images/packages_graph.png)
 
 ## Time and space complexity
 
