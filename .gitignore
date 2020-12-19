@@ -6,6 +6,5 @@
 /tiralab-taru/tolkien-100-rows.txt
 /tiralab-taru/tolkien-1000-rows.txt
 /tiralab-taru/tolkien-full.txt
-/tiralab-taru/*.txt
-/tiralab-taru/*.huff
-/tiralab-taru/*.dc
+/tiralab-taru/src/test/resources/ulysses-decompress.dc
+/tiralab-taru/src/test/resources/ulysses.huff
