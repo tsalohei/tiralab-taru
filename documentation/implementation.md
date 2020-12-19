@@ -1,11 +1,18 @@
 # Implementation document
 
-The application does not have a user interface (at least yet). The user is expected to place the file to be compressed to the same folder as where the project is located. Different classes have different responsibilities:
-  * Class FileInput is responsible for turning the contents of the file given by the user to a String.
-  * Class input handles the String input; it processes information about the String so that the information is available in the correct format to the HuffmanTree.
-  * Class CharacterObject is a helper class to Input class
-  * Class HuffmanTree gets an instance of Input in the constructor parameter. This class builds a tree structure, and returns the root node for the tree.
-  * Class Output is responsible for saving the coded input into a file. 
+## Structure of the program
+
+The program has three layers. Package UI handles interaction with the user, package logic contains the logic of Huffman algorithm as well as file operations. Package data structures has own implementations of data structures needed for the Huffman algorithm (minimum heap and map). The data structures are designed to be used by classes in package Logic. This means that they don’t have all the possible methods that could be useful for a map, for example.
+
+
+
+## Time and space complexity
+
+The Huffman algorithm works in time O(n log n) when there are n characters in the file. This means that the size of the input gets smaller at each step. The required space complexity is O(n) with the exception of very small files (see empirical testing results). 
+
+## Improvement “backlog”
+
+The class Input has more complexity than would be needed. Refactoring that class would clarify the application. Package Logic has a lot of classes; these could be divided into smaller packages if the responsibilities of the classes would be clarified and made more independent. Providing support for other than text files would improve the application. Error handling could be unified and UI improved to be interactive.  
 
 ## Sources and references
 
