@@ -13,9 +13,6 @@ import java.io.IOException;
 public class Main { 
     public static void main(String[] args) throws IOException   {
         
-        //if not run from command line
-        String fileName = "book.txt";
-        
         if (args.length == 0) {
             System.out.println("***Welcome to compress and decompress your file" 
                 + "with Huffman algorithm!***");           
@@ -28,13 +25,13 @@ public class Main {
                     + "with Huffman algorithm!***");           
             System.out.println("A file ending in .txt will be compressed. A file"
                     + " ending in .huff will be decompressed. ");
-            fileName = args[0];
+            String fileName = args[0];            
             
-            
-            if (fileEndsTxtOrHuff(fileName) == false) {
+            if (fileIsValid(fileName) == false) {
                 System.out.println("You can only compress .txt files and "
-                        + "decompress .huff files.");
-                System.exit(0);
+                        + "decompress .huff files (that you also have placed to"
+                        + " the same folder as this application).");
+                System.exit(1);
             }
             
             if (fileName.endsWith(".txt")) {
@@ -44,8 +41,7 @@ public class Main {
             } else {
                 System.out.println("You need to give a file that ends in .txt"
                         + " or .huff.");
-            }
-                        
+            }                        
         } else {
             System.out.println("Error. Too many arguments. See user instructions"
                     + " for further details.");
@@ -95,12 +91,13 @@ public class Main {
         }  
     }
     
-    public static boolean fileEndsTxtOrHuff(String fileName) {
-        if (fileName.endsWith(".txt") || fileName.endsWith(".huff")) {
-            return true;
-        } else {
-            return false;
+    public static boolean fileIsValid(String fileName) {
+        if ((fileName.endsWith(".txt") || fileName.endsWith(".huff"))) {
+            File file = new File(fileName);            
+            return file.exists();
         }
+        
+        return false;        
     }
     
     public static void printResults(long start, long finish, String initialFile, 
