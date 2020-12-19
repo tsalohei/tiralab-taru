@@ -77,7 +77,7 @@
             <version>0.8.3</version>
             <configuration>
                 <excludes>
-                    <exclude>app/tiralab-taru/Main.class</exclude>
+                    <exclude>app/tiralab/taru/ui/*</exclude>
                 </excludes>
             </configuration>    
             <executions>
