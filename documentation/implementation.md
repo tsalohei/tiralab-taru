@@ -16,6 +16,6 @@ The class Input has more complexity than would be needed. Refactoring that class
 
 ## Sources and references
 
-The materials from course "Tietorakenteet ja algoritmit, 2019" have been used when writing own data structures: [link](https://tira-s19.mooc.fi/materiaali) to material.
+* The materials from course "Tietorakenteet ja algoritmit, 2019" have been used when writing own data structures: [link](https://tira-s19.mooc.fi/materiaali) to material.
 
-Data structures and algorithm analysis in Java. Addison Wesley Longman. Mark Allen Weiss, 1999.
+* Data structures and algorithm analysis in Java. Addison Wesley Longman. Mark Allen Weiss, 1999.
