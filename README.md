@@ -26,6 +26,8 @@
 
 ## Terminal commands
 
+Terminal commands for running the program: see [user instructions](https://github.com/tsalohei/tiralab-taru/blob/main/documentation/user_instructions.md)
+
 ### Javadoc
 
 Create a HTML-version of the JavaDoc with the following command:
